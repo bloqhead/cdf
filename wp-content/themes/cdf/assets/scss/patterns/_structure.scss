@@ -1,0 +1,961 @@
+//
+// Basic structure
+//
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	background: #fff;
+	font: $base-font-weight #{$base-font-size}/#{$base-line-height} $adelle;
+	color: $base-font-color;
+
+	// to prevent scrolling when the mobile menu is visible
+	&.locked {
+		overflow: hidden !important;
+		-webkit-overflow-scrolling: auto !important;
+	}
+
+	&.blog {
+
+		.page-section--waves-plain {
+
+			h1.heading {
+				font-size: 32px;
+
+				&:before {
+					display: none;
+				}
+			}
+		}
+	}
+
+	&.home,
+	&.blog,
+	&.page-template-page-dreams-come-true,
+	&.page-template-page-donate-now,
+	&.page-template-page-dual-columns,
+	&.page-template-page-dual-columns-alt,
+	&.page-template-page-full,
+	&.post-type-archive-dreams,
+	&.single-dreams {
+
+		section.page-section.page-section--waves.page-section--waves-plain {
+
+			h4.heading.heading--type-2.uppercase {
+				font-size: 32px;
+			}
+		}
+
+		#page-wrapper {
+			max-width: 100% !important;
+			margin: 0;
+			padding: 0;
+		}
+
+		@include media(max-width $base-max-width) {
+			#page-wrapper .page-section__inner {
+				padding: $inner-wrapper-padding;
+			}
+		}
+	}
+}
+
+// general inner content wrapper
+.inner-wrapper,
+.page-section__inner {
+	max-width: $max-width;
+	margin-left: auto;
+	margin-right: auto;
+
+	&.narrow-content {
+		max-width: $narrow-width-alt;
+		@media (max-width:1108px){
+			padding:0 20px;
+		}
+	}
+}
+
+.inner-wrapper {
+	padding: $inner-wrapper-padding;
+}
+
+// full width template content area
+// NOTE: this width may not be final
+body.page-template-page-full {
+
+	.page-section__content {
+		max-width: $content-max-width;
+	}
+}
+
+// dual columns template
+body.page-template-page-dual-columns,
+body.page-template-page-dual-columns-alt {
+
+	.page-section--waves {
+		margin-bottom: 3em;
+	}
+
+	.dual-columns__col {
+
+		*:last-of-type {
+			margin-bottom: 0;
+		}
+
+		&[class*="col-"] {
+			margin-bottom: 2.5%;
+		}
+	}
+
+	.dual-columns__col-content {
+		margin-bottom: 100px;
+	}
+
+	.dual-columns__lower-stack-content {
+
+		h1, h2, h3, h4, h5, h6 {
+			text-transform: none;
+			letter-spacing: 0;
+		}
+	}
+
+	.page-section__focus-content {
+
+		h3 {
+			font-size: em(32);
+			color: #fff;
+			text-transform: none;
+			letter-spacing: 0;
+			line-height: 1.2;
+			margin: 0 0 0.5em 0;
+			padding: 0;
+		}
+
+		p {
+			font-size: em(20);
+			@include cleartext;
+		}
+
+		a:not(:last-of-type) {
+			color: $yellow;
+
+			&:hover, &:focus {
+				color: #fff;
+			}
+		}
+
+		a:last-of-type {
+			@include cdfbutton;
+			@include cdfbutton-inverse;
+
+			&:hover, &:focus {
+				background: #fff;
+				color: $dark-red;
+			}
+		}
+	}
+
+	.dual-columns__col--2:not(.dual-columns__col--plain) {
+		background: $pale-gray;
+		border-radius: 5em;
+		padding: 2em;
+		text-align: center;
+	}
+
+	.dual-columns__col--plain {
+
+		.social-buttons {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
+	@include media(max-width 1023px) {
+		.page-section.page-section--waves {
+			background-image: none !important;
+			background-color: $dark-blue;
+			padding: 3.5em 3em 1em;
+			border-bottom: 5px solid $bright-red;
+
+			.page-section__inner,
+			.grid__col-free {
+				margin: 0;
+				padding: 0 !important;
+			}
+		}
+	}
+
+	@include media($bp-medium) {
+		.dual-columns {
+			@include grid($justify-content: flex-start, $align-items: flex-start, $align-content: flex-start);
+		}
+
+		.dual-columns__col:not(.dual-columns__col--2) .dual-columns__col-content {
+			// padding-right: 5em;
+		}
+	}
+}
+
+// global top level content wrapper
+#primary-content {
+	overflow: hidden;
+	position: relative;
+
+	&:before {
+		position: absolute;
+		top: -7.5em;
+		right: -1.5em;
+		left: -1.5em;
+		z-index: -1;
+		display: block;
+		content: " ";
+		background: transparent url("#{$assets}/pattern_tile@2x.png") repeat;
+		height: 22em;
+		@include transform(rotate(-8deg));
+	}
+
+	body.internal-page &,
+	body.blog & {
+
+		&:before {
+			display: none;
+		}
+	}
+}
+
+// global page wrapper
+#page-wrapper {
+	margin: $page-wrapper-margin;
+}
+
+// global content area
+.content-primary  {
+
+}
+
+// global sidebar
+.content-secondary {
+
+}
+
+// if there is a sidebar present...
+@include media($bp-medium) {
+	body.page-template-default.has-sidebar:not(.home),
+	body.search-results.has-sidebar,
+	body.has-sidebar:not(.home):not(.blog):not(.page-template-page-dreams-come-true):not(.internal-page) {
+
+		#page-wrapper {
+			@include grid;
+		}
+
+		.content-primary  {
+			@include grid-col($col: $content-flex-col-width, $gutter: $default-grid-gutter);
+		}
+
+		.content-secondary {
+			@include grid-col($col: $sidebar-flex-col-width, $gutter: $default-grid-gutter);
+
+			.content-secondary {
+				@include flexreset;
+				background: none;
+			}
+		}
+	}
+}
+
+// grid setup for pages that have a sidebar
+@include media($bp-medium) {
+	.sidebar-grid {
+		max-width: 1380px;
+		padding: 0 1.5em;
+		margin: 0 auto;
+		@include grid($align-items: flex-start);
+
+		.page-section__content {
+			@include grid-col($col: 7, $gutter: 12%);
+		}
+
+		.sidebar {
+			@include grid-col($col: 5, $gutter: 12%);
+
+			.sidebar {
+				@include flexreset;
+				background: none;
+			}
+		}
+	}
+}
+
+// header
+#masthead {
+	position: relative;
+	background: $masthead-background;
+
+	// the internal page masthead has a different background color
+	html:not(.scrolled) body.internal-page & {
+		background: #fff;
+
+		.inner-wrapper {
+			background-color: transparent;
+		}
+	}
+
+	&, .inner-wrapper {
+		@include transition($global-masthead-transition);
+	}
+
+	.inner-wrapper {
+		background: rgba(#fff, 0.8);
+		padding: 1em;
+	}
+
+	@include media($bp-medium) {
+		.inner-wrapper {
+			// margin-top: 2em;
+		}
+	}
+}
+
+#masthead .inner-wrapper {
+	@include grid($justify-content: center, $align-items: center);
+}
+
+.brand {
+	@include grid-col($col: $masthead-brand-flex-col-width + 3, $gutter: 0);
+
+	@include targetIE {
+		flex: 0 0 20% !important;
+	}
+}
+
+#site-navigation {
+	@include grid-col($col: $masthead-navigation-flex-col-width - 3, $gutter: 0);
+
+	@include targetIE {
+		flex: 0 0 80% !important;
+	}
+}
+
+.brand, #site-navigation {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+@include media(min-width 1025px) {
+	.main-menu {
+		float: right;
+	}
+}
+
+@include media($bp-medium) {
+	.brand {
+		@include grid-col($col: $masthead-brand-flex-col-width, $gutter: 0);
+		padding-right: 2em;
+		max-width: 225px;
+	}
+
+	#site-navigation {
+		@include grid-col($col: $masthead-navigation-flex-col-width, $gutter: 0);
+	}
+}
+
+// global footer
+#colophon {
+	background: transparent url("#{$assets}/pattern_tile@2x.png") repeat;
+	font-family: $sofia;
+	font-weight: bold;
+
+	.inner-wrapper {
+		background: #fff;
+		padding: 2em;
+		margin-top: 3em;
+		margin-bottom: 3em;
+	}
+
+	a:not(.btn) {
+		text-decoration: none;
+
+		&, &:visited {
+			color: $dark-blue;
+		}
+
+		&:hover, &:focus, &:active {
+			color: $bright-blue;
+		}
+	}
+
+	img {
+		max-width: 145px;
+		height: auto;
+	}
+}
+
+.colophon__widget-container {
+
+}
+
+.colophon__widget {
+
+	> h4 {
+		margin: 0 0 0.5em 0;
+		padding: 0;
+		letter-spacing: 0;
+		text-transform: uppercase;
+	}
+
+	ol, ul {
+		@include cleanlist;
+
+		a:not(.btn) {
+			text-transform: uppercase;
+		}
+	}
+
+	address {
+		font-style: normal;
+		color: $dark-blue;
+	}
+
+	.btn {
+		border-radius: 2em;
+	}
+}
+
+@include media($bp-medium) {
+	#colophon {
+		margin-top: 2.5%;
+
+		.inner-wrapper {
+			margin-top: 8em;
+			margin-bottom: 8em;
+		}
+	}
+
+	.colophon__widget-container {
+		@include grid($gutter: 0);
+	}
+
+	.colophon__widget {
+		@include grid-col($col: auto);
+	}
+}
+
+// global footer copyright
+#copyright {
+	text-align: center;
+	margin-top: 1em;
+
+	span {
+		display: inline-block;
+		margin: 0 0.3em;
+	}
+}
+
+//
+// Page sections
+//
+
+// main page section elements
+.page-section {
+
+	&--spaced {
+		margin-top: 3em;
+		margin-bottom: 3em;
+
+		@include media($bp-medium) {
+			margin-top: 6em;
+			// margin-top: 12em;
+			margin-bottom: 6em;
+		}
+	}
+
+	&--spaced-uniform {
+		margin-top: 3em;
+		margin-bottom: 3em;
+
+		@include media($bp-medium) {
+			margin-top: 6em;
+			margin-bottom: 6em;
+		}
+	}
+
+	// for when no masthead is present
+	&.no-masthead {
+		margin-top: 3em;
+	}
+
+	&--title-only {
+
+		// for instances when no masthead image is set
+		// but we still require a title
+		h1 {
+			@include heading-flourish;
+		}
+	}
+}
+
+.page-section__footer {
+	margin-top: 2em;
+}
+
+.page-section__header {
+
+	> h2 {
+		font-size: 1.875em;
+		text-transform: uppercase;
+		margin: 0 0 0.35em 0;
+		padding: 0;
+	}
+}
+
+// Internal page titles
+body.internal-page:not(.single-post) .page-section__header h1 {
+	@include heading-flourish;
+}
+
+.page-section__content {
+	font-size: 1.250em;
+	margin-bottom: 2em;
+
+	p {
+		padding: 0;
+		margin: 0;
+	}
+}
+
+// wavey
+.page-section--waves {
+	background: $pale-gray;
+
+	@include media(min-width 1023px) {
+		margin-top: 9em;
+		margin-bottom: 9em;
+	}
+
+	$shape-shift: 80px;
+
+	&:before, &:after {
+		position: relative;
+		content: "";
+		display: block;
+		width: 100%;
+		height: $shape-shift;
+		background-image: url("#{$assets}/shapes/waves.svg");
+		background-size: cover;
+		background-color: transparent;
+		background-repeat: no-repeat;
+	}
+
+	&:before {
+		top: -$shape-shift;
+		background-position: top center;
+	}
+
+	&:after {
+		bottom: -$shape-shift;
+		background-position: bottom center;
+	}
+
+	@include targetIE {
+		$shape-shift-new: $shape-shift - 5;
+		&:before {
+			top: -$shape-shift-new;
+		}
+
+		&:after {
+			bottom: -$shape-shift-new;
+		}
+	}
+
+	.page-section__inner {
+		position: relative;
+		z-index: 2;
+		margin-top: -6em;
+		margin-bottom: -6em;
+	}
+
+	.page-section__content {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	// modifiers
+	&--dark-blue {
+		background: $dark-blue;
+		color: #fff;
+
+		&:before, &:after {
+			background-image: url("#{$assets}/shapes/waves_dark_blue.svg");
+		}
+	}
+
+	// "dreams come true" page template wave sections
+	&--sunglasses-girl,
+	&--dad-and-daughter,
+	&-custom {
+		background-color: transparent;
+		background-size: cover;
+		background-repeat: no-repeat;
+		color: #fff;
+		@include grid($justify-content: center, $align-items: center);
+
+		.page-section__inner {
+			@include grid-col($col: 12, $gutter: 0);
+		}
+
+		&:before, &:after {
+			display: none;
+		}
+
+		@include targetIE {
+			display: table;
+			height: 100%;
+			width: 100%;
+
+			.page-section__inner {
+				display: table-cell;
+				vertical-align: middle;
+
+				> .grid {
+					max-width: $base-max-width;
+					margin-left: auto;
+					margin-right: auto;
+				}
+			}
+		}
+	}
+
+	// sunglasses girl - "dreams come true" page template
+	&--sunglasses-girl {
+		position: relative;
+		z-index: 2;
+		background-image: url("#{$assets}/wave_bg_girl_sunglasses.png");
+		background-position: right center;
+		min-height: 512px;
+		margin-bottom: -6em;
+
+		@include media(max-width 480px) {
+			.page-section__content {
+				font-size: 1em;
+			}
+		}
+	}
+
+	&--dad-and-daughter, &-custom {
+
+		@include media(max-width 800px) {
+			.grid__col-free {
+				@include grid-col($col: 7, $gutter: $default-grid-gutter);
+			}
+		}
+
+		@include media(min-width 1024px) {
+			background-color: transparent;
+			background-position: 45% 0;
+			min-height: 800px;
+			text-align: left;
+
+			.grid__col-free {
+				@include grid-col($col: 6, $gutter: $default-grid-gutter);
+			}
+		}
+
+		@include media(min-width 1400px) {
+			background-position: 25% 0;
+		}
+	}
+
+	// dad and daughter - "dreams come true" page template
+	// @todo eventually rename this. naming it based on its content is bad practice
+	&--dad-and-daughter {
+		margin-top: 0;
+		min-height: 600px;
+
+		.page-section__inner {
+			@include grid-col($col: 12, $gutter: $default-grid-gutter);
+		}
+
+		@include media(min-width 1540px) {
+			.page-section__focus-content {
+				padding-right: 2em;
+			}
+		}
+
+		@include media(max-width 1023px) {
+			.heading--flourish {
+
+				&:before {
+					display: none;
+				}
+			}
+
+			.heading--type-2 {
+				font-size: em(32);
+				margin-bottom: 1em;
+			}
+
+			.heading--type-3 {
+				font-size: em(28);
+			}
+		}
+
+		@include media(min-width 1024px) {
+			// background-image: url("#{$assets}/wave_bg_dad_and_daughter.png");
+			background-image: url("#{$assets}/dreams_come_true_new_masthead.png");
+		}
+	}
+
+	// custom
+	&-custom {
+		margin-top: 0;
+
+		.page-section__inner {
+			@include grid-col($col: 12, $gutter: $default-grid-gutter);
+		}
+
+		@include media(min-width 1540px) {
+			.page-section__focus-content {
+				padding-right: 2em;
+			}
+		}
+
+		@include media(max-width 1023px) {
+			.heading--flourish {
+
+				&:before {
+					display: none;
+				}
+			}
+
+			.heading--type-2 {
+				font-size: em(32);
+				margin-bottom: 1em;
+			}
+
+			.heading--type-3 {
+				font-size: em(28);
+			}
+		}
+	}
+
+	// plain
+	&-plain {
+		position: relative;
+		background: $dark-blue;
+		color: #fff;
+		margin-top: 0;
+		padding: 3.5em 3em 1em;
+		border-radius: 0 0;
+		border-bottom: 5px solid $bright-red;
+
+		// &:before, &:after {
+		// 	display: none;
+		// }
+
+		&:after {
+			display: none;
+		}
+
+		&:before {
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: block;
+			content: '';
+			width: 100%;
+			height: 100%;
+			background-image: url("assets/images/pattern/pattern_tile.svg");
+			background-repeat: repeat;
+			background-position: top center;
+			background-size: 750px auto;
+			opacity: 0.1; // was originally 0.18; reduced for readability
+		}
+
+		.page-section__inner {
+			margin-top: 0;
+			// margin-bottom: 3em;
+			margin-bottom: 0;
+		}
+
+		.page-section__focus-content {
+			max-width: $content-max-width;
+			padding-right: 5%;
+			padding-left: 5%;
+			// width: 100%;
+
+			h1 {
+				font-size:32px;
+			}
+		}
+
+		@include media($bp-medium) {
+			margin-bottom: 40px;
+			// margin-bottom: 120px;
+		}
+	}
+
+	// fancy
+	&-fancy {
+		position: relative;
+		padding: 3em 3em 0 3em;
+		margin-bottom: 3em;
+		color: #fff;
+
+		&:before, &:after {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: -1;
+			content: "";
+			display: block;
+			width: 100%;
+		}
+
+		&:before {
+			height: 45%;
+			background: $dark-blue;
+		}
+
+		&:after {
+			height: 60%;
+			background: transparent url("#{$assets}/shapes/waves_blue_alt.svg") no-repeat bottom center;
+			background-size: 120% 98px;
+		}
+	}
+}
+
+// homepage - get involved
+.page-section--get-involved {
+	background: $dark-blue url("#{$assets}/cdf_get_involved.jpg") no-repeat center;
+	background-size: cover;
+	padding-top: 3em;
+	padding-bottom: 3em;
+
+	.page-section__header {
+		margin-bottom: 3em;
+
+		&,
+		> h2 {
+			color: #fff;
+		}
+	}
+}
+
+// homepage - latest news
+.page-section--latest-news {
+
+}
+
+// homepage - featured partners
+.page-section--featured-partners {
+
+	.page-section__content {
+		margin-top: 3em;
+		margin-bottom: 3em;
+	}
+}
+
+@include media($bp-medium) {
+	.page-section__header {
+
+		> h2 {
+			font-size: 2.875em;
+			line-height: 1.2;
+		}
+	}
+
+	.page-section__footer {
+		margin-top: 4em;
+	}
+
+	.narrow {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: $narrow-max-width;
+
+		&--left {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
+	.page-section--get-involved {
+		position: relative;
+		background-attachment: fixed;
+		padding-top: 12em;
+		padding-bottom: 12em;
+
+		&:before, &:after {
+			position: absolute;
+			left: 0; right: 0;
+			display: block;
+			content: "";
+			height: 130px;
+			width: 110%;
+			background-color: transparent;
+			background-repeat: no-repeat;
+			background-size: 100% 100%;
+			background-position: top center;
+		}
+
+		// the negative values below eliminate chance of background color leak
+		&:before {
+			top: -2px;
+			background-image: url("#{$assets}/get_involved_top_mask.svg");
+		}
+
+		&:after {
+			bottom: -2px;
+			background-image: url("#{$assets}/get_involved_bottom_mask.svg");
+		}
+	}
+
+	.page-section--latest-news {
+		margin-top: 3em;
+		margin-bottom: 3em;
+	}
+}
+
+// this is a new addition so that the page title masthead
+// is easier to manipulate outside of the content
+.outerbar {
+
+	.page-section__inner {
+		max-width: 1085px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.heading {
+		font-size: 32px;
+	}
+}
+
+body{
+	.column_mobile{
+		display:none;
+		@media (max-width:800px){
+			display:block;
+		}
+	}
+	.column_full{
+		@media (max-width:800px){
+			display:none;
+		}
+	}
+	section.page-section.page-section--events.page-section--waves {
+	    @media (max-width:800px){
+			padding-bottom: 50px;
+	    }
+	}
+	section.page-section.page-section--dreams-masthead.page-section--waves.page-section--waves--dad-and-daughter {
+		@media (max-width:800px){
+		    background: #043987;
+		    min-height: 500px;
+	    }
+	}
+}

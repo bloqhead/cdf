@@ -1,0 +1,95 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	{% if ( fn( 'empty_content', post.post_content ) ) %}
+	<section class="page-section page-section--waves-plain">
+		<div class="page-section__inner">
+			<div class="grid">
+				<div class="grid__col-free">
+					<div class="page-section__focus-content">
+						<h1 class="heading heading--type-2 uppercase">{{post.title}}</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% else %}
+	<!-- Fancy Masthead -->
+	<section class="page-section page-section--waves{% if ( post.thumbnail.src ) %} page-section--waves-custom" style="background-image: url('{{post.thumbnail.src('big-sea-masthead')}}');{% else %} page-section--waves-plain{% endif %}">
+		<div class="page-section__inner">
+
+			<div class="grid">
+				<div class="grid__col-free">
+					<div class="page-section__focus-content">
+						<h4 class="heading heading--type-2 uppercase">{{post.title}}</h4>
+						<p class="text-large">{{ post.content }}</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+	{% endif %}
+
+	<section class="page-section page-section--{{ post.post_name }}{% if not post.thumbnail.src %} no-masthead{% endif %}">
+		<div class="page-section__inner narrow-content">
+
+	{# begin Dual Columns #}
+	{% if ( fn( 'get_field', 'page_columns_dual_columns' ) ) %}
+		<div class="grid dual-columns">
+
+		{# Set a class if the user does not want styling applied to the right column #}
+		{% set col_plain_check = fn( 'get_field', 'page_columns_plain_right_column' ) %}
+		{% if ( col_plain_check == true ) %}
+			{% set col_plain_class = 'dual-columns__col--plain' %}
+		{% endif %}
+
+		{# Set the col width classes #}
+		{% set col_split = fn( 'get_field', 'page_columns_column_split' ) %}
+		{% if ( col_split == '50-50' ) %}
+			{% set col_1_class, col_2_class = 'grid__col-6', 'grid__col-6' %}
+		{% elseif ( col_split == '75-25' ) %}
+			{% set col_1_class, col_2_class = 'grid__col-8', 'grid__col-4' %}
+		{% elseif ( col_split == '25-75' ) %}
+			{% set col_1_class, col_2_class = 'grid__col-4', 'grid__col-8' %}
+		{% endif %}
+
+		{% if ( fn( 'get_field', 'page_columns_column_1_content' ) ) %}
+			<div class="dual-columns__col dual-columns__col--1 {{col_1_class}}">
+				{% for item in post.get_field('page_columns_column_1_content') %}
+				<div class="dual-columns__col-content">
+					{{item.page_columns_column_1_content_blocks}}
+				</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+
+		{% if ( fn( 'get_field', 'page_columns_column_2_content' ) ) %}
+			<div class="dual-columns__col dual-columns__col--2 {{col_2_class}} {{col_plain_class}}">
+				{% for item in post.get_field('page_columns_column_2_content') %}
+				<div class="dual-columns__col-content">
+					{{item.page_columns_column_2_content_blocks}}
+				</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+
+		</div>
+	{% endif %}
+	{# end Dual Columns #}
+
+	{% if ( fn( 'get_field', 'page_columns_lower_stack' ) ) %}
+		<div class="dual-columns__lower-stack">
+			{% for item in post.get_field('page_columns_lower_stack_content') %}
+			<div class="dual-columns__lower-stack-content">
+				{{item.page_columns_lower_stack_content_blocks}}
+			</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+	{# end Lower Stack #}
+
+		</div>
+	</section>
+{% endblock %}

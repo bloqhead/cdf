@@ -1,0 +1,71 @@
+{% block html_head_container %}
+	{% include 'views/header.twig' %}
+	{% block head %}
+	{% endblock %}
+	</head>
+{% endblock %}
+
+	<body class="{{body_class}}">
+
+		<div id="primary-content" class="content-area">
+
+			<main id="page" class="site" role="main">
+				<a class="skip-link screen-reader-text" href="#content">
+					{{ __( 'Skip to content', 'big-sea' ) }}
+				</a>
+
+				<header id="masthead" class="site-header" role="banner">
+					<div class="inner-wrapper">
+					{% block header %}
+						<div class="brand">
+							<h1 class="brand__title">
+								<a class="brand__logo" href="{{site.url}}" rel="home">
+									{% include "assets/images/logo/cdf_full_color.svg" %}
+									<span class="sr-only">{{site.name}}</span>
+								</a>
+							</h1>
+						</div>
+						<nav id="site-navigation" class="main-navigation" role="navigation">
+							<button class="menu-toggle" aria-controls="site-navigation-wrap" aria-expanded="false">
+								<b aria-hidden="true"></b>
+								<b aria-hidden="true"></b>
+								<b aria-hidden="true"></b>
+								<span class="sr-only">{{ __( 'Primary Menu', 'big-sea' ) }}</span>
+							</button>
+							<div id="site-navigation-wrap">
+								{% include "menu-secondary.twig" %}
+								{% include "menu.twig" %}
+							</div>
+						</nav><!-- #site-navigation -->
+					{% endblock %}
+					</div><!-- .inner-wrapper -->
+				</header><!-- #masthead -->
+
+				{% block outerbar %}{% endblock %}
+
+				<div id="page-wrapper" class="inner-wrapper">
+
+					<div class="content-primary site-content">
+						{% if title %}<h1 class="page-title">{{title}}</h1>{% endif %}
+						{% block content %}
+							<p>Sorry, no content.</p>
+						{% endblock %}
+					</div><!-- #content -->
+
+				{% block sidebar %}{% endblock %}
+
+				</div><!-- #page-wrapper -->
+
+			{% block footer %}
+				<footer id="colophon" class="site-footer" role="contentinfo">
+					{% include 'footer.twig' %}
+				</footer><!-- #colophon -->
+			{% endblock %}
+
+			</main><!-- #page -->
+
+		</div><!-- #primary -->
+
+		{{function('wp_footer')}}
+	</body>
+</html>

@@ -1,0 +1,31 @@
+//
+// Carousels
+//
+
+// bxSlider Resets
+.bx-wrapper {
+	background: none;
+	border: 0;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+
+	.bx-loading {
+	   	background-image: url("#{$assets}/bxslider/bx_loader.gif");
+	}
+}
+
+// all carousels
+.carousel {
+
+}
+
+// homepage partners carousel
+.carousel--partners {
+	padding: 0;
+	margin: 0;
+
+	img {
+		filter: grayscale(1);
+	}
+}

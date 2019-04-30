@@ -1,0 +1,127 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<!-- How Dreams Come True Masthead -->
+	<section class="page-section page-section--dreams-masthead page-section--waves page-section--waves--dad-and-daughter">
+		<div class="page-section__inner">
+
+			<div class="grid">
+				<div class="grid__col-free">
+					<div class="page-section__focus-content">
+						<h4 class="heading heading--type-2 heading--flourish uppercase">How Dreams Come True</h4>
+						<h3 class="heading heading--type-3 heading--light">A dream-come-true serves as a much-needed bright spot in a child's medical journey.</h3>
+						<p class="text-large">It's the means by which hope and joy are restored to a child and their family,
+						giving them memories that will last a lifetime.</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- Steps blurb -->
+	<section class="page-section text-center floating-icon-container page-section--spaced">
+		<div class="page-section__inner narrow container-overlay">
+			<div class="page-section__content">
+				<p class="emph emph--type-1">There are several steps to making a dream come true. The experience of a dream is a source of inspiration for many children who are undergoing medical treatments as it enables them to focus on something uplifting and positive at the most difficult time in their young lives.</p>
+			</div>
+		</div>
+		<!-- floating icons -->
+		<div class="floating-icon floating-icon__heart--alt-1" aria-hidden="true">
+			{% include "/assets/images/large_icons/heart.svg" %}
+		</div>
+		<div class="floating-icon floating-icon__airplane--alt-1" aria-hidden="true">
+			{% include "/assets/images/large_icons/airplane.svg" %}
+		</div>
+	</section>
+
+	<!-- Events -->
+	<section class="page-section page-section--spaced-uniform">
+		<div class="page-section__inner">
+			<header class="page-section__header narrow narrow--left">
+				<h3 class="heading heading--type-1">We determine a child’s medical eligibility with the help of the treating physician.</h3>
+				<p class="emph emph--type-2"><em>Referrals are received from area hospitals and pediatric facilities, including:</em></p>
+			</header>
+			<div class="page-section__content">
+				<div class="grid">
+					<div class="grid__col-7">
+						<ul class="list list--type-1">
+							<li><h4>Florida Hospital</h4></li>
+							<li><h4>Johns Hopkins All Children's Hospital</h4></li>
+							<li><h4>Moffitt Cancer Center</h4></li>
+							<li><h4>Sabal Palms Children's Center</h4></li>
+							<li><h4>Shriners Hospitals For Children</h4></li>
+							<li><h4>St. Joseph's Children's Hospital</h4></li>
+							<li><h4>Tampa General Hospital</h4></li>
+						</ul>
+					</div>
+					<div class="grid__col-5">
+						<p>These referrals are received from doctors, nurses, Child Life Specialists and social workers,
+						friends, families and other patients. Following the receipt of an application and
+						verification of diagnosis, the children are interviewed by a Dream Fund staff member.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Types of Dreams -->
+	<section class="page-section floating-icon-container page-section--spaced-uniform page-section--types-of-dreams">
+		<div class="page-section__inner">
+			<div class="grid floating-icon-container">
+				<div class="grid__col-4">
+					<img class="image image--round image--bright-offset" src="{{ fn( 'get_theme_path', '/assets/images/girl-eating-ice-cream.jpg' ) }}" alt="Little girl eating ice cream">
+				</div>
+				<div class="grid__col-8">
+					<h2 class="heading heading--type-4 mt-0">The types of dreams vary as much as the personalities of the children we serve.</h2>
+					<p>They may involve meeting a celebrity, a trip, a gift such as a computer or playground,
+					or our most-requested dream, a week at the Give Kids the World Village, which enables a child
+					to visit all of the Orlando-area theme parks. The Dream Fund makes dreams come true for every
+					child referred to them.</p>
+					<p>The compassionate staff of the Children's Dream Fund works closely with the children and
+					their families to create the perfect dream. Once the child has decided on his or her dream, our
+					Dream Coordinators begin creating an unforgettable experience, sparked by the child’s creativity
+					and imagination. The Dream Coordinators then deliver the dream to the child and their family
+					as a &quot;Celebration of Life&quot; party, and the fun begins!</p>
+				</div>
+				<!-- floating icons -->
+				<div class="floating-icon floating-icon__balloon--alt-1" aria-hidden="true">
+					{% include "/assets/images/large_icons/balloon.svg" %}
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<!-- Circular Lightbox Photos -->
+	<section class="page-section text-center">
+		<div class="page-section__inner grid grid--discs">
+			<figure class="grid__col-4">
+				<a href="{{ fn( 'get_theme_path', '/assets/images/samples/lightbox_cool_kid.jpg' ) }}" data-lity>
+					<img src="{{ fn( 'get_theme_path', '/assets/images/samples/lightbox_thumb_cool_kid.png' ) }}" alt="Cool Kid" class="kids__face">
+				</a>
+			</figure>
+			<figure class="grid__col-4">
+				<a href="{{ fn( 'get_theme_path', '/assets/images/samples/lightbox_taylor_swift.jpg' ) }}" data-lity>
+					<img src="{{ fn( 'get_theme_path', '/assets/images/samples/lightbox_thumb_taylor_swift.png' ) }}" alt="Taylor Swift" class="kids__face">
+				</a>
+			</figure>
+			<figure class="grid__col-4">
+				<a href="{{ fn( 'get_theme_path', '/assets/images/samples/lightbox_wetsuit_family.jpg' ) }}" data-lity>
+					<img src="{{ fn( 'get_theme_path', '/assets/images/samples/lightbox_thumb_wetsuit_family.png' ) }}" alt="Wetsuit Family" class="kids__face">
+				</a>
+			</figure>
+		</div>
+	</section>
+
+	<!-- Blue Wave Background Section -->
+	<section class="page-section page-section--waves page-section--waves--sunglasses-girl text-center">
+		<div class="page-section__inner narrow">
+			<div class="page-section__content">
+				<p class="text-peachy">If you’d like to bring the joy of a dream-come-true to the life of a sick child donate here.</p><br>
+				<p><a href="/donate-now/" class="btn btn--inverse">Donate Now</a></p>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

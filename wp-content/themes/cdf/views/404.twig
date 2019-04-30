@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+
+{% block outerbar %}
+  <section class="page-section page-section--waves-plain outerbar">
+    <div class="page-section__inner">
+      <h1 class="heading heading--type-2 uppercase">Content Not Found</h1>
+    </div>
+  </section>
+{% endblock %}
+
+{% block content %}
+<section class="page-section">
+  <div class="page-section__inner narrow-content">
+    <div class="page-section__content">
+      <h3>Sorry, we couldn't find what you were looking for.</h3>
+      <p>Please use the search below to try and find your destination. If you still can't find it, <a href="/contact-us/">drop us a line!</a></p>
+      <p>&nbsp;</p>
+      {{ fn( 'get_search_form' ) }}
+    </div>
+  </div>
+</section>
+{% endblock %}

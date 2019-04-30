@@ -1,0 +1,36 @@
+//
+// WordPress-generated classes
+//
+
+// alignment
+.alignleft, .alignright {
+	display: block;
+	margin: 1.5em auto;
+	max-width: 100%;
+	height: auto;
+	clear: both;
+	float: none;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@include media($bp-medium) {
+	.alignleft, .alignright {
+		display: inline-block;
+	}
+
+	.alignleft {
+		float: left;
+		margin-right: 1.5em;
+	}
+
+	.alignright {
+		float: right;
+		margin-left: 1.5em;
+	}
+}

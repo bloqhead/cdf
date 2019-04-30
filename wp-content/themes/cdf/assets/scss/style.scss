@@ -1,0 +1,48 @@
+/*!
+Theme Name: Children's Dream Fund
+Theme URI: http://bigseadesign.com/
+Author: Big Sea
+Author URI: http://bigseadesign.com/
+Description: A base WordPress theme built with Twig, Timber and Underscores.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: big-sea
+Tags:
+*/
+
+// Normalize
+@import "vendor/underscores";
+
+// Bourbon mixin library
+$output-bourbon-deprecation-warnings: false !default; // stfu, Bourbon
+@import "node_modules/bourbon/app/assets/stylesheets/bourbon";
+
+// Bourbon Neat mixin library
+// We're only grabbing the parts that we need since we aren't using
+// Neat's built-in grid system.
+$max-width: 1180px !default;
+@import "node_modules/bourbon-neat/app/assets/stylesheets/functions/private";
+@import "node_modules/bourbon-neat/app/assets/stylesheets/functions/new-breakpoint";
+@import "node_modules/bourbon-neat/app/assets/stylesheets/settings/grid";
+@import "node_modules/bourbon-neat/app/assets/stylesheets/settings/visual-grid";
+@import "node_modules/bourbon-neat/app/assets/stylesheets/grid/media";
+@import "node_modules/bourbon-neat/app/assets/stylesheets/grid/visual-grid";
+@import "node_modules/bourbon-neat/app/assets/stylesheets/mixins/clearfix";
+
+// Variables
+@import "variables";
+
+// Additional Vendor
+@import "vendor/base-scss/base";
+@import "vendor/bxslider";
+@import "vendor/lity";
+
+// Mixins
+@import "mixins/**/*.scss";
+
+// Flexgrid
+@import "node_modules/flexbox-grid-mixins/sass/flexbox-grid-mixins";
+
+// Patterns
+@import "patterns/**/*.scss";

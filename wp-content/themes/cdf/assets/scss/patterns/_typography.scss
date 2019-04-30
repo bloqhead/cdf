@@ -1,0 +1,173 @@
+//
+// Typography
+//
+
+// clearer text
+#{$headings}, .btn, button {
+	@include cleartext;
+}
+
+// Headings
+#{$headings} {
+	letter-spacing: $base-letter-spacing;
+	font-family: $sofia;
+}
+
+h1, h2, h3 {
+	text-transform: uppercase;
+
+	// undo some things on select page templates
+	.dual-columns &,
+	.page-template-page-full & {
+		text-transform: none;
+		letter-spacing: 0;
+	}
+}
+
+// Custom headings
+.heading {
+	// trying to combat a weird line break issue
+	width: 100%;
+	min-width: 100%;
+
+	text-transform: none;
+	letter-spacing: 0;
+	line-height: 1.2;
+
+	&--type-1 {
+		font-size: em(32);
+		text-transform: normal;
+		margin: 0 0 0.32em 0;
+		padding: 0;
+	}
+
+	&--type-2 {
+		font-size: em(24);
+		text-transform: uppercase;
+		color: $yellow;
+		margin: 0 0 1.5em 0;
+		padding: 0;
+	}
+
+	&--type-3 {
+		font-size: em(32);
+		color: #fff;
+		margin: 0 0 0.5em 0;
+		padding: 0;
+	}
+
+	&--type-4 {
+		color: $dark-blue;
+	}
+
+	&--type-5 {
+		font-size: em(32);
+	}
+}
+
+.heading--flourish {
+	@include flourish;
+}
+
+// Lists
+.list {
+	// resets
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	&--type-1 {
+
+		li {
+			display: block;
+
+			&:not(:last-of-type) {
+				margin-bottom: 0.35em;
+			}
+		}
+
+		em, h4 {
+			display: inline;
+			margin: 0;
+			padding: 0;
+		}
+
+		h4 {
+			letter-spacing: 0;
+			font-size: em(18);
+			font-family: $peachy;
+			font-weight: 400;
+			color: $dark-blue;
+		}
+	}
+}
+
+// Other Utilities
+.uppercase {
+	text-transform: uppercase;
+}
+
+.emph {
+	@include cleartext;
+
+	&--type-1 {
+		font-family: $peachy;
+		font-weight: 400;
+		font-size: em(18);
+		line-height: 34px;
+		color: $bright-red;
+		margin: 0;
+		padding: 0;
+	}
+
+	&--type-2 {
+		font-size: 1.250em;
+		font-style: italic;
+		font-weight: normal;
+		margin: 0 0 1em 0;
+		padding: 0;
+	}
+}
+
+hr.rule {
+	display: block;
+	clear: both;
+	width: 100%;
+	height: 2px;
+	margin: 1.5em auto;
+	padding: 0;
+	content: "";
+	background: $pale-gray;
+	border: 0;
+	overflow: hidden;
+}
+
+blockquote {
+  position: relative;
+  font: italic 1.3em/1.5 $adelle;
+  margin: 3em 4em;
+  padding: 0;
+  @include cleartext;
+
+  &:before {
+    position: absolute;
+    top: -0.18em;
+    left: -0.18em;
+    z-index: -1;
+    content: "\201C";
+    font: normal 5em/1 $peachy;
+    color: $pale-gray;
+  }
+}
+
+.site-content a:not(.btn) {
+	transition: all 0.2s ease-in-out;
+
+	&, &:visited {
+		color: $dark-blue;
+	}
+
+	&:hover, &:active, &:focus {
+		color: $bright-blue;
+	}
+}

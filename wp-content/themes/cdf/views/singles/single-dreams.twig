@@ -1,0 +1,82 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<section class="page-section page-section--waves-fancy">
+		<div class="page-section__inner">
+			<div class="grid">
+				{% if post.get_thumbnail %}
+				<div class="grid__col-5 dreams__masthead-thumbnail-wrapper">
+					<img class="masthead__thumbnail" src="{{post.thumbnail.src('big-sea-dreams-featured')}}" alt="{{post.thumbnail.alt}}" />
+				</div>
+				{% endif %}
+				<div class="grid__col-7 dreams__masthead-content">
+					{% if post.get_field('dreams_quote') %}
+					<blockquote class="dreams__quote">
+						{{ post.get_field('dreams_quote') }}
+					</blockquote>
+					{% endif %}
+					<h1 class="post__title">{{post.title}}</h1>
+					{% if post.get_field('dreams_video') %}
+					<p class="dreams__video-button">
+						<a
+							href="{{ post.get_field('dreams_video') }}"
+							class="btn btn--inverse"
+							data-lity>Watch Video</a>
+					</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="page-section">
+		<div class="page-section__inner">
+
+			{% set carousel_images = post.get_field('dreams_carousel_gallery') %}
+			{% if carousel_images %}
+			<section class="dreams__carousels">
+
+				<div class="dreams__carousel-wrapper">
+					<ul class="dreams__carousel">
+					{% for carousel_image in carousel_images %}
+						<li class="dreams__carousel-item">
+							<img src="{{ carousel_image.sizes['big-sea-dreams-carousel-full'] }}">
+						</li>
+					{% endfor %}
+					</ul>
+				</div>
+
+				<div class="dreams__pager-wrapper">
+					<div class="dreams__pager">
+					{% for carousel_image in carousel_images %}
+						<a class="dreams__pager-item" data-slide-index="{{ loop.index0 }}">
+							<img src="{{ carousel_image.sizes['big-sea-dreams-carousel-thumb'] }}">
+						</a>
+					{% endfor %}
+					</div>
+				</div>
+
+			</section>
+			{% endif %}
+
+			<article class="post post-{{post.post_type}}" id="post-{{post.ID}}">
+				<div class="post__content">
+					<p>{{post.content}}</p>
+				</div>
+			</article>
+
+			<section class="box box--rounded">
+				<h3 class="box__title">Help Make a Child’s Dream Come True!</h3>
+				<p><a href="/donate-now/" class="btn btn--inverse">Donate Now</a></p>
+			</section>
+
+		</div>
+	</section>
+
+	<section class="page-section">
+		{% include ["partials/postnav-dreams.twig"] %}
+	</section>
+
+{% endblock %}
+
+{% block sidebar %}{% endblock %}

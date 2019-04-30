@@ -1,0 +1,27 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<section class="page-section page-section--dreams-masthead page-section--waves page-section--waves--dad-and-daughter">
+		<div class="page-section__inner">
+			<div class="grid">
+				<div class="grid__col-free">
+					<div class="page-section__focus-content">
+						<h4 class="heading heading--type-2 heading--flourish uppercase">Donate Now</h4>
+						<h3 class="heading heading--type-3 heading--light">The Children's Dream Fund relies on gifts from a generous and caring community.</h3>
+						<p class="text-large">Tangible gifts of many many kinds and cash gifts of any amount are welcomed, whether it's a one-time gift or a recurring donation.</p>
+						<p class="text-large"><a href="#" class="btn btn--inverse">Donate Now</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="page-section page-section--{{ post.post_name }}">
+		<div class="page-section__inner narrow-content">
+			<div class="page-section__content">
+				{{ post.content }}
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

@@ -1,0 +1,350 @@
+//
+// Menus
+//
+
+// these breakpoints are integral to the menu code
+$menu-base-breakpoint: new-breakpoint(min-width 1025px);
+$menu-secondary-breakpoint: new-breakpoint(max-width 1026px);
+
+// general menus
+.menu {
+	display: block;
+	margin: 0;
+	padding: 0;
+	font-family: $sofia;
+	@include cleartext;
+
+	&, li {
+		list-style: none;
+	}
+}
+
+// inline menus
+.menu--inline {
+
+	> li {
+		display: block;
+
+		a {
+			display: block;
+		}
+	}
+
+	@include media($menu-base-breakpoint) {
+		> li {
+			display: inline-block;
+		}
+	}
+}
+
+// main menu
+.main-navigation {
+	clear: both;
+	display: block;
+	float: left;
+	width: 100%;
+	text-transform: uppercase;
+
+	ul {
+		// list-style: none;
+		// margin: 0;
+		// padding-left: 0;
+	}
+
+	li {
+		display: block;
+	}
+
+	a {
+		display: block;
+		text-decoration: none;
+		font-weight: 700;
+		@include transition(all 0.2s ease-in-out);
+
+		&:visited {
+
+		}
+	}
+}
+
+// small menu
+.menu-toggle {
+	$h: 6px;
+	$w: 50px;
+	$color: $bright-red;
+
+	position: fixed;
+	z-index: 11;
+	top: $misc-menu-spacing; right: $misc-menu-spacing;
+	width: $w;
+	height: $w;
+	display: block;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	border-radius: 0;
+	outline: 0;
+	background: none !important;
+	text-align: center;
+
+	b {
+		display: block;
+		border-radius: $h / 2;
+		width: $w;
+		height: $h;
+		background: $color;
+		@include transition(all 0.2s ease-in-out);
+		@include transform-origin(50% 50%);
+
+		&:first-of-type { margin-bottom: $h; }
+		&:last-of-type { margin-top: $h; }
+	}
+
+	// when the mobile menu is active
+	&[aria-expanded="true"] {
+
+		b {
+			background: #fff;
+
+			&:last-of-type,
+			&:first-of-type {
+				width: $w + 20;
+			}
+
+			&:first-of-type {
+				@include transform(
+					rotate(45deg)
+					translateY(16px)
+				);
+			}
+
+			&:nth-of-type(2) {
+				opacity: 0;
+				visibility: hidden;
+			}
+
+			&:last-of-type {
+				@include transform(
+					rotate(-45deg)
+					translateY(-16px)
+				);
+			}
+		}
+	}
+}
+
+@include media($menu-secondary-breakpoint) {
+	#site-navigation-wrap {
+		position: fixed;
+		top: 0; right: 0; bottom: 0; left: 0;
+		z-index: $menu-container-z-index;
+		opacity: 0;
+		visibility: hidden;
+		overflow: scroll;
+		background: $dark-blue url("#{$assets}/pattern_tile_light_alt@2x.png") repeat;
+		padding: $misc-menu-spacing;
+		@include transition(all 0.2s ease-in-out);
+
+		&.toggled {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	// main navigation
+	.main-menu {
+
+		> li > a {
+			font-size: 1.5em;
+			font-weight: 700;
+			color: #fff;
+			letter-spacing: $base-letter-spacing;
+			@include transition(all 0.2s ease-in-out);
+
+			&:hover,
+			&:focus,
+			&:active {
+				color: $bright-blue;
+			}
+		}
+	}
+
+	li.has-dropdown {
+
+		> a:before {
+			display: inline-block;
+			content: "+";
+			margin-right: 0.25em;
+			font-size: 130%;
+			line-height: 1;
+		}
+	}
+
+	.dropdown {
+		margin: 0 0 0 1.7em;
+		padding: 0;
+		font-size: 0.9em;
+
+		a {
+			display: block;
+			padding: 0.35em 0;
+		}
+	}
+
+	#hamburger {
+		display: block;
+		position: absolute;
+		right: ( $menu-hamburger-dimensions / 2.5 );
+		top: $menu-hamburger-dimensions - 2;
+		z-index: $menu-container-z-index + 1; // always ensures it's not covered by the menu container
+		overflow: visible;
+		width: $menu-hamburger-dimensions;
+		height: $menu-hamburger-dimensions;
+		padding: 0;
+		margin: 0;
+	}
+}
+
+@include media(max-width 1024px) {
+	.main-menu .dropdown__item a {
+		color: #fff !important;
+	}
+}
+
+@include media($menu-base-breakpoint) {
+	.main-menu {
+
+		a {
+			font-size: 0.9em;
+
+			&, &:visited {
+				color: $dark-blue;
+			}
+
+			&:hover, &:focus, &:active {
+				color: $bright-red;
+			}
+		}
+
+		> li {
+			position: relative;
+			display: inline;
+
+			> a {
+				display: inline-block;
+				padding: 0 0.8em;
+			}
+		}
+	}
+
+	.dropdown {
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		z-index: 12;
+		display: block;
+		width: $pulldown-menu-width;
+		border-radius: 3em;
+		background: $dark-blue;
+		opacity: 0;
+		visibility: hidden;
+		padding: 1.25em 1.5em 1.25em 1.7em;
+		margin: 0;
+		line-height: 1.2;
+		@include transition(all 0.2s ease-in-out);
+		@include transform(
+			translateX(-50%)
+			scale(0.95)
+		);
+
+		a {
+
+			&, &:visited {
+				color: #fff;
+			}
+
+			&:hover, &:focus, &:active {
+				color: $bright-blue;
+			}
+		}
+
+		> li {
+			position: relative;
+
+			&:before {
+				position: absolute;
+				top: 3px; left: 0;
+				content: "\2022";
+				color: $bright-blue;
+			}
+		}
+
+		> li > a {
+			padding: 0.5em 1em;
+		}
+	}
+
+	li.has-dropdown:hover > .dropdown,
+	li.has-dropdown:focus > .dropdown {
+		opacity: 1;
+		visibility: visible;
+		@include transform(
+			translateX(-50%)
+			scale(1.0)
+		);
+	}
+}
+
+// secondary menu
+.secondary-menu {
+	display: block;
+	margin-bottom: 1.8em;
+	margin-top: 1em;
+
+	li a {
+
+		&, &:visited {
+			color: $bright-red;
+		}
+
+		&:hover, &:active, &:focus {
+			color: $bright-blue;
+		}
+	}
+
+	li:last-of-type a {
+		font-size: 1.2em;
+		font-family: $peachy;
+		font-weight: 400;
+	}
+}
+
+@include media($menu-base-breakpoint) {
+	.menu-toggle {
+		display: none;
+	}
+
+	.secondary-menu {
+		float: right;
+		margin-bottom: 1em;
+
+		a {
+			display: inline-block;
+			color: $bright-red;
+			padding: 0.5em 0.6em;
+
+			&:hover, &:focus {
+				color: $bright-blue;
+			}
+		}
+
+		li {
+			display: inline;
+		}
+	}
+}
+
+// footer menu
+.footer-menu {
+
+}

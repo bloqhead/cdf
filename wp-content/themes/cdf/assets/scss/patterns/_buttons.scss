@@ -1,0 +1,163 @@
+//
+// Buttons
+//
+
+@mixin cdfbutton {
+	display: inline-block;
+	border-radius: 50em;
+	border: 0;
+	padding: 15px 35px;
+	background: $dark-blue;
+	font-weight: bold;
+	font-family: $sofia;
+	text-transform: uppercase;
+	line-height: inherit;
+	letter-spacing: $base-letter-spacing;
+	@include transition(0.2s all ease-in-out);
+
+	&, &:hover, &:active, &:focus, &:visited {
+		color: #fff !important;
+	}
+
+	&:hover, &:active, &:focus {
+		background: $bright-red;
+	}
+
+	// for when the button class is used on links
+	&, &:hover, &:focus, &:active {
+		text-decoration: none;
+	}
+
+	// icons
+	i {
+		font-size: 125%;
+		margin-left: 0.25em;
+	}
+}
+
+@mixin cdfbutton-inverse {
+	background: $bright-red;
+
+	&:hover, &:active, &:focus {
+		background: $dark-blue;
+		color: #fff;
+	}
+}
+
+@mixin cdfbutton-inverse-alt {
+	background: $bright-red;
+
+	&:hover, &:active, &:focus {
+		background: $dark-red;
+	}
+}
+
+@mixin cdfbuttons-bright {
+	&:hover, &:active, &:focus {
+		background: $yellow;
+		color: $bright-red;
+	}
+}
+
+@mixin cdfbuttons-block {
+	display: block;
+	text-align: center;
+}
+
+@mixin cdfbutton-large {
+	border-radius: 1.8em;
+	font-size: 1.3em;
+}
+
+@mixin cdfbutton-small {
+	font-size: 0.8em;
+	padding: 0.7em 2.2em;
+}
+
+.btn,
+button,
+input[type="submit"],
+input[type="reset"] {
+	@include cdfbutton;
+}
+
+// for fuck sake, Gravityforms
+.gform_wrapper .gform_footer input.button {
+	padding: 15px 35px !important;
+
+	&:hover, &:active, &:focus {
+		background-color: $bright-red;
+	}
+}
+
+.btn--inverse {
+	@include cdfbutton-inverse;
+}
+
+.btn--inverse-alt {
+	@include cdfbutton-inverse-alt;
+}
+
+.btn--bright {
+	@include cdfbuttons-bright;
+}
+
+.btn--block {
+	@include cdfbuttons-block;
+}
+
+.btn--large {
+	@include cdfbutton-large;
+	&.btn--paypal{
+		font-size:16px;
+		width:311px;
+	}
+}
+
+.gradient{
+		position:relative;
+		overflow:hidden;
+		span{
+			z-index:2;
+			position:relative;
+		}
+		&::before {
+		--size: 0;
+
+		content: '';
+		position: absolute;
+		left: var(--x);
+		top: var(--y);
+		width: var(--size);
+		height: var(--size);
+		background: radial-gradient(circle closest-side, #ef0047, transparent);
+		transform: translate(-50%, -50%);
+		transition: width .2s ease, height .2s ease;
+		z-index:0;
+		}
+	
+		&:hover::before {
+			--size: 400px;
+		}
+}
+
+.btn--small {
+	@include cdfbutton-small;
+}
+
+.btn--paypal {
+	font-size:16px;
+	i {
+		border-right: 1px solid rgba(#fff, 0.35);
+		margin-right: 0.25em;
+		padding-right: 0.35em;
+		@include transition(0.15s all ease-in-out);
+	}
+
+	&:hover, &:focus {
+
+		// i {
+		// 	border-right-color: #fff;
+		// }
+	}
+}

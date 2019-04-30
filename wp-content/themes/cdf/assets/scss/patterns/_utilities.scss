@@ -1,0 +1,153 @@
+//
+// Utility Classes
+//
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-large {
+	font-size: em(20);
+	@include cleartext;
+}
+
+.text-peachy {
+	font-family: $peachy;
+	font-size: em(18);
+	@include cleartext;
+}
+
+.block {
+	display: block;
+}
+
+// padding
+.p-0 {
+	padding: 0 !important;
+}
+
+.pt-0 {
+	padding-top: 0 !important;
+}
+
+.pb-0 {
+	padding-bottom: 0 !important;
+}
+
+.pr-0 {
+	padding-left: 0 !important;
+}
+
+.pl-0 {
+	padding-right: 0 !important;
+}
+
+// margin
+.m-0 {
+	margin: 0 !important;
+}
+
+.mt-0 {
+	margin-top: 0 !important;
+}
+
+.mb-0 {
+	margin-bottom: 0 !important;
+}
+
+.mr-0 {
+	margin-left: 0 !important;
+}
+
+.ml-0 {
+	margin-right: 0 !important;
+}
+
+// this is good for when you want targeted elements
+// to be above something that might otherwise
+// interfere with them visually.
+.container-overlay {
+	$bg: rgba(#fff, 0.95);
+	$shadow: 0 0 0.8em 0.8em $bg;
+
+	position: relative;
+	z-index: 2;
+	padding: 1em;
+	background: $bg;
+	-webkit-box-shadow: $shadow;
+	-moz-box-shadow: $shadow;
+	box-shadow: $shadow;
+}
+
+//
+// Images
+//
+
+.image {
+
+}
+
+.image--round {
+	border-radius: 50%;
+}
+
+.image--bright-offset {
+	$offset: -15px -15px 0 0 $yellow;
+	box-shadow: $offset;
+	-webkit-box-shadow: $offset;
+}
+
+.box {
+	max-width: 786px;
+	background: $pale-gray;
+	padding: 3em;
+	margin: 2em auto;
+	text-align: center;
+
+	h1, h2, h3, h4, h5, h6 {
+
+		&:first-of-type {
+			margin-top: 0;
+			padding-top: 0;
+		}
+	}
+
+	&--rounded {
+		border-radius: 100px;
+	}
+}
+
+.box__title {
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+@include media($bp-medium) {
+	.box__title {
+		font-size: em(32);
+	}
+}
+
+// Scroll to top
+.scroll-to-top {
+	position: fixed;
+	z-index: 10;
+	bottom: 2em;
+	right: 2em;
+	display: inline-block;
+	background: $dark-blue;
+	border-radius: 3px;
+	padding: 0.5em 1em;
+	color: #fff !important;
+	text-decoration: none;
+	transition: all 300ms ease-in-out;
+	transform: translateY(0);
+
+	&--hidden {
+		transform: translateY(200%);
+	}
+}

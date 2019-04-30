@@ -1,0 +1,16 @@
+//
+// Custom mixins
+//
+
+@mixin pather($points, $is-url: false, $path-type: polygon) {
+	@if $is-url == true {
+		$output: url("#{$points}");
+		clip-path: $output;
+		-webkit-clip-path: $output;
+	}
+	@else {
+		$output: #{$path-type}unquote("(")"#{$points}"unquote(")");
+		clip-path: $output;
+		-webkit-clip-path: $output;
+	}
+}

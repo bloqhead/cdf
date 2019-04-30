@@ -1,0 +1,48 @@
+//
+// 404
+//
+
+body.error404 {
+
+  .search-form {
+    display: flex;
+    margin: 0 auto;
+    max-width: $content-max-width;
+
+    .search-field, .search-submit {
+      height: 50px;
+      line-height: 50px;
+      margin: 0;
+      padding: 0;
+    }
+
+    label {
+      flex: 0 0 70%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .search-field {
+      border-radius: 50em 0 0 50em;
+      padding: 0 20px;
+    }
+
+    .search-submit {
+      flex: 0 0 30%;
+      border-radius: 0 50em 50em 0;
+    }
+  }
+
+  @include media(min-width 1024px) {
+    .search-form {
+
+      label {
+        flex: 0 0 80%;
+      }
+
+      .search-submit {
+        flex: 0 0 20%;
+      }
+    }
+  }
+}

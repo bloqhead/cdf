@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<section class="page-section page-section--waves-plain">
+		<div class="page-section__inner">
+			<header class="page-section__header">
+				<h1 class="heading heading--type-2 heading--flourish uppercase">{{fn('post_page_title')}}</h1>
+			</header>
+		</div>
+	</section>
+
+	<section class="page-section">
+		<div class="page-section__inner narrow-content">
+			<div class="page-section__content">
+			{% for post in posts %}
+				{% include ["partials/teaser-"~post.post_type~".twig", "partials/teaser.twig"] %}
+			{% endfor %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block sidebar %}
+	{{ sidebar }}
+{% endblock %}

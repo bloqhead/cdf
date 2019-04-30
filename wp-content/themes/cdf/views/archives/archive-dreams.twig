@@ -1,0 +1,59 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<section class="page-section page-section--waves page-section--waves-plain">
+		<div class="page-section__inner narrow-content">
+			<h4 class="heading heading--type-2 uppercase">{{title}}</h4>
+			<h3 class="heading heading--type-5 heading--light">
+				New dreams are happening every day. <br>Check back often to read about them!
+			</h3>
+		</div>
+	</section>
+
+	<section class="page-section">
+		<div class="page-section__inner narrow-content">
+
+			{% if dream_types %}
+			<div class="dream-filters">
+				<ul class="dream-filters__actions">
+				{% for dream_type in dream_types %}
+					<li><a href="#" data-dream-type="{{dream_type.slug}}">{{dream_type.name}}</a></li>
+				{% endfor %}
+					<li class="dream-filters__clear-wrapper">
+						<a class="dream-filters__clear" href="#">
+							<i class="fa fa-close"></i> <span>Clear filter</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			{% endif %}
+
+			<section class="dreams-teaser-wrap">
+
+				<div class="dreams-teaser-masonry">
+				{% for post in posts %}
+					{% include ["partials/teaser-dreams.twig"] %}
+				{% endfor %}
+				</div>
+
+				<!-- floating icons -->
+				<div class="floating-icon floating-icon__balloon--alt-2" aria-hidden="true">
+					{% include "/assets/images/large_icons/balloon.svg" %}
+				</div>
+				<div class="floating-icon floating-icon__heart--alt-2" aria-hidden="true">
+					{% include "/assets/images/large_icons/heart.svg" %}
+				</div>
+				<div class="floating-icon floating-icon__airplane--alt-2" aria-hidden="true">
+					{% include "/assets/images/large_icons/airplane.svg" %}
+				</div>
+
+			</section>
+
+			{% include "partials/pagination.twig" %}
+
+		</div>
+	</section>
+
+{% endblock %}
+
+{% block sidebar %}{% endblock %}

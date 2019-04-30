@@ -1,0 +1,76 @@
+//
+// Pagination
+//
+
+.pagination {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: $sofia;
+  letter-spacing: 1px;
+  @include cleartext;
+}
+
+.pagination__pages {
+  @include grid($display: inline-flex, $justify-content: center, $align-items: center, $align-content: center);
+  padding: 0;
+  margin: 40px 0;
+  list-style: none;
+
+  li {
+    @include grid-col($col: auto, $condensed: true);
+    margin: 0 0.2em;
+  }
+}
+
+.pagination-item {
+  text-decoration: none;
+  @include transition(all 0.2s ease-in-out);
+
+  &:not(.pagination-item--prev):not(.pagination-item--next) {
+    border-radius: 100%;
+    padding: 2px 10px;
+  }
+
+  &:not(.pagination-item--prev):not(.pagination-item--next):not(.pagination-item--current) {
+
+    &, &:visited, &:active, &:focus {
+      color: $dark-blue;
+    }
+  }
+
+  &--prev, &--next {
+    
+    &, &:visited {
+      color: #000;
+    }
+
+    &:hover, &:active, &:focus {
+      color: $bright-blue;
+    }
+
+    i {
+      font-size: em(12);
+      @include transform(translateY(-2px));
+    }
+  }
+
+  &--prev {
+    margin-right: 2em;
+  }
+
+  &--next {
+    margin-left: 2em;
+  }
+
+  &--current {
+    background: $bright-red;
+    color: #fff;
+  }
+}
+
+@include media($bp-medium) {
+  .pagination {
+    font-size: em(18);
+  }
+}

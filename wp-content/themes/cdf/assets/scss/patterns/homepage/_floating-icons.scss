@@ -1,0 +1,199 @@
+//
+// Floating Icons
+//
+
+@mixin floaticon(
+	$class: null,
+	$fill: $yellow,
+	$top: auto,
+	$right: auto,
+	$bottom: auto,
+	$left: auto,
+	$anim-timing: 1.5s,
+	$anim-direction: normal,
+	$flip: null
+) {
+	.floating-icon__#{$class} {
+		top: $top;
+		right: $right;
+		bottom: $bottom;
+		left: $left;
+		@include animation("CircularFloat" $anim-timing linear infinite $anim-direction);
+
+		svg path {
+			fill: $fill;
+		}
+
+		// additional styles you may want to add
+		@content;
+	}
+}
+
+.floating-icon-container {
+	position: relative;
+}
+
+.floating-icon {
+	display: none;
+}
+
+@include media($bp-medium) {
+	.floating-icon {
+		position: absolute;
+		z-index: -1; // ensures they are behind any other content and not overlapping it
+		display: block;
+		width: 250px;
+		height: auto;
+
+		svg {
+			width: 100%;
+		}
+	}
+}
+
+//
+// Now we activate each individual icon
+//
+
+// balloon
+@include floaticon(
+	$class: "balloon",
+	$fill: $yellow,
+	$top: 0,
+	$left: 10%,
+	$anim-timing: 2.5s,
+	$anim-direction: normal
+);
+
+// airplane
+@include floaticon(
+	$class: "airplane",
+	$fill: $dark-blue,
+	// $top: -8%,
+	$top: -15%,
+	$right: 10%,
+	$anim-timing: 4.5s,
+	$anim-direction: reverse
+);
+
+// cruise ship
+@include floaticon(
+	$class: "cruiseship",
+	$fill: $dark-blue,
+	$bottom: -12%,
+	$left: 12%,
+	$anim-timing: 3.5s,
+	$anim-direction: normal
+);
+
+// controller
+@include floaticon(
+	$class: "controller",
+	$fill: $yellow,
+	$right: 18%,
+	$bottom: -8%,
+	$anim-timing: 6.5s,
+	$anim-direction: reverse
+);
+
+// crown
+@include floaticon(
+	$class: "crown",
+	$fill: $dark-blue,
+	// $bottom: -12%,
+	$top: -105%,
+	$left: 0,
+	$anim-timing: 10.5s,
+	$anim-direction: normal
+);
+
+// heart
+@include floaticon(
+	$class: "heart",
+	$fill: $dark-blue,
+	$right: -5%,
+	$top: 0,
+	// $bottom: -12%,
+	$anim-timing: 5.5s,
+	$anim-direction: reverse
+);
+
+// heart - alt 1
+@include floaticon(
+	$class: "heart--alt-1",
+	$fill: $yellow,
+	$top: -20%,
+	$left: 10%,
+	$anim-timing: 2.5s,
+	$anim-direction: normal
+) {
+
+	> svg {
+		@include transform(scale(1.45));
+	}
+};
+
+// heart - alt 2
+@include floaticon(
+	$class: "heart--alt-2",
+	$fill: $yellow,
+	$top: 20%,
+	$right: -15%,
+	$anim-timing: 2.5s,
+	$anim-direction: normal
+);
+
+// airplane - alt 1
+@include floaticon(
+	$class: "airplane--alt-1",
+	$fill: $dark-blue,
+	$top: 10%,
+	$right: 10%,
+	$anim-timing: 3.5s,
+	$anim-direction: reverse
+) {
+
+	> svg {
+		@include transform(scaleX(-1));
+	}
+};
+
+// airplane - alt 1
+@include floaticon(
+	$class: "airplane--alt-2",
+	$fill: $dark-blue,
+	$bottom: -3%,
+	$left: -15%,
+	$anim-timing: 3.5s,
+	$anim-direction: reverse
+) {
+
+	> svg {
+		@include transform(scaleX(-1));
+	}
+};
+
+// balloon - alt 1
+@include floaticon(
+	$class: "balloon--alt-1",
+	$fill: $dark-blue,
+	$bottom: -3%,
+	$left: 19%,
+	$anim-timing: 5.5s,
+	$anim-direction: normal
+) {
+
+	> svg {
+		// @include transform(scale(0.8));
+	}
+};
+
+// balloon - alt 2
+@include floaticon(
+	$class: "balloon--alt-2",
+	$fill: $bright-red,
+	$top: -6%,
+	$left: -14%,
+	$anim-timing: 5.5s,
+	$anim-direction: normal
+);

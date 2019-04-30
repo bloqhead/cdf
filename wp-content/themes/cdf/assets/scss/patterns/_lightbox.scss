@@ -1,0 +1,29 @@
+//
+// Lightbox overrides
+//
+
+.lity {
+  background: #fff url("#{$assets}/pattern_tile@2x.png") repeat;
+}
+
+.lity-content {
+
+  &:after {
+    display: none;
+  }
+}
+
+.lity-close {
+
+  // the plugin's base CSS styles all of these
+  // together, so this has to stay as is
+  &, &:hover, &:active, &:focus {
+    background: transparent url("#{$assets}/close.svg") no-repeat center;
+    background-size: 65%;
+    color: transparent;
+    font-size: 0;
+    width: 50px;
+    height: 50px;
+    transform: translateY(0) translateX(0);
+  }
+}

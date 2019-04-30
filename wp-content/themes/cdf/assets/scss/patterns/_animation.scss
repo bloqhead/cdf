@@ -1,0 +1,57 @@
+//
+// Animation
+//
+// Put your animation stuff here and then use
+// it as needed elsewhere.
+//
+// Make sure to use Bourbon's mixins when
+// you can. They save time.
+//
+
+@include keyframes("FunSpin") {
+	$rotation: 3deg;
+
+	0% {
+		@include transform(rotate(0));
+	}
+	50% {
+		@include transform(rotate($rotation));
+	}
+	75% {
+		@include transform(rotate(-( $rotation * 2 )));
+	}
+	100% {
+		@include transform(rotate(0));
+	}
+}
+
+@include keyframes("CircularFloat") {
+	$distance: 0.35em;
+
+	from {
+		@include transform(
+			rotate(0deg)
+			translateX($distance)
+			rotate(0deg)
+		);
+	}
+	to {
+		@include transform(
+			rotate(360deg)
+			translateX($distance)
+			rotate(-360deg)
+		);
+	}
+}
+
+
+@include keyframes("NavReveal") {
+	$distance: 164px;
+
+	from {
+		@include transform(translateY(-#{$distance}));
+	}
+	to {
+		@include transform(translateY(0));
+	}
+}

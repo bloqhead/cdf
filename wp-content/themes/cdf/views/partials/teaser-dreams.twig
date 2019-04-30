@@ -1,0 +1,24 @@
+<article
+  class="teaser teaser-{{post.post_type}}" 
+  id="teaser-{{post.ID}}"
+  {% if post.terms %}
+  data-filter-post-cat="{% for term in post.terms %}{{term.slug}} {% endfor %}"
+  {% endif %}
+>
+{% block content %}
+  {% if post.get_thumbnail %}
+  <a href="{{post.link}}">      
+    <figure class="teaser__image-wrap">
+      <img class="teaser__thumbnail" src="{{post.thumbnail.src('big-sea-dreams-profile')}}" alt="{{post.thumbnail.alt}}" />
+    </figure>
+    {% if post.get_field('dreams_quote') %}
+    <blockquote class="dreams__quote">
+      {{ post.get_field('dreams_quote') }}
+    </blockquote>
+    {% endif %}
+    <h3 class="teaser__title">{{post.title}}</h3>
+  </a>
+  {% endif %}
+{% endblock %}
+
+</article>

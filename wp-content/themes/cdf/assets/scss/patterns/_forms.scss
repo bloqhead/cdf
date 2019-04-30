@@ -1,0 +1,145 @@
+//
+// Forms
+//
+
+form {
+
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+	display: block;
+	width: 100%;
+	background: $pale-gray;
+	padding: 0.3em 1em;
+	margin: 0.5em 0;
+	border-radius: 1em;
+	border: 2px solid darken($pale-gray, 5%);
+	font-family: inherit;
+	font-size: inherit;
+	@include transition(all 0.2s ease-in-out);
+
+	@include placeholder {
+		color: $med-gray;
+	}
+
+	&:hover, &:focus, &:active {
+		background: #fff;
+		color: #000;
+
+		@include placeholder {
+			color: #000;
+		}
+	}
+}
+
+textarea {
+	overflow: auto;
+}
+
+// Gravityforms overrides
+
+.gform_wrapper.gform_wrapper {
+
+	label {
+		@include cleartext;
+	}
+
+	select {
+		font-family: $sofia;
+		font-size: em(14);
+	}
+
+	input[type="button"], input[type="submit"], button {
+		background: $dark-blue;
+		color: #fff;
+		font-family: $sofia;
+		border: 0;
+		padding: 0.5em 1em;
+	}
+
+	.gsection_title {
+		color: $dark-blue;
+	}
+
+	.gfield {
+
+	}
+
+	.gfield_label {
+		margin-top: 1.25em;
+		// font-weight: normal;
+	}
+
+	.ginput_complex {
+
+		label {
+			font-family: $sofia;
+			font-size: em(11) !important;
+			font-weight: 700;
+			letter-spacing: 0;
+			text-transform: uppercase;
+		}
+	}
+
+	.gfield_radio {
+
+		label {
+			font-family: $sofia;
+			font-weight: 700;
+		}
+	}
+
+	.gfield_html.gfield_no_follows_desc {
+		display: block;
+		font-size: em(12);
+		background: $pale-gray;
+		padding: 0.75em;
+		margin: 1.5em 0;
+		border-radius: 5px;
+	}
+
+	.gf_progressbar_percentage {
+
+		span {
+			font-family: $sofia;
+			line-height: 1.3;
+			font-weight: 700;
+			@include cleartext;
+		}
+	}
+
+	.percentbar_blue {
+		background-color: $bright-blue;
+	}
+
+	// Errors
+
+	.validation_error {
+		border: 0;
+		background-color: $bright-red;
+		color: #fff;
+	}
+
+	&.gform_validation_error .gform_body ul li.gfield.gfield_error {
+		max-width: 100% !important;
+		border: 2px solid $bright-red;
+		padding-right: 20px;
+		padding-left: 20px;
+		background-color: rgba($bright-red, 0.15);
+	}
+}

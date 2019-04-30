@@ -1,0 +1,187 @@
+//
+// Events
+//
+
+// homepage featured event
+.homepage-events {
+
+}
+
+.homepage-events__section-title {
+	font-size: 1.2em;
+	letter-spacing: 0;
+	text-transform: none;
+	padding-bottom: 0.25em;
+	margin-bottom: 0.25em;
+	border-bottom: 4px solid $light-gray;
+}
+
+.homepage-events__featured {
+
+}
+
+.homepage-events__header {
+	margin-bottom: 1em;
+
+	> h3 {
+		color: $bright-red;
+		text-transform: uppercase;
+		letter-spacing: 0;
+		font-size: 1.8em;
+		line-height: 1.2;
+		margin: 0;
+		padding: 0;
+	}
+
+	.post-meta {
+		font-size: 0.9em;
+		font-style: italic;
+	}
+}
+
+.homepage-events__content {
+
+}
+
+.homepage-events__featured-image {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+}
+
+.homepage-events__excerpt {
+	font-size: 0.9em;
+	font-weight: 200;
+
+	p:not(:last-of-type) {
+		margin-bottom: 1.2em;
+	}
+
+	.btn {
+
+	}
+}
+
+// homepage events list
+.homepage-event-list {
+
+}
+
+.homepage-event-list__event {
+
+	> a {
+		text-decoration: none;
+		@include grid($justify-content: center, $align-items: center);
+		margin-bottom: 1em;
+		@include transition(all 0.2s ease-in-out);
+
+		&, &:visited {
+			color: $dark-gray;
+		}
+
+		.homepage-event-list__date {
+			font-family: $sofia;
+			font-weight: 700;
+			color: $bright-red;
+			text-align: center;
+			line-height: 1;
+			background: #fff;
+			border: 4px solid $dark-blue;
+			padding: 0.85em;
+			@include grid-col($col: 4, $gutter: 0);
+			@include transition(all 0.2s ease-in-out);
+
+			.homepage-event-list__month {
+				font-size: 0.8em;
+			}
+
+			.homepage-event-list__day {
+				font-size: 1.7em;
+			}
+		}
+
+		.homepage-event-list__title {
+			padding: 0 1em;
+			@include grid-col($col: 8, $gutter: 0);
+
+			> h3 {
+				font-size: 0.85em;
+				line-height: 1.1;
+				letter-spacing: 0;
+				text-transform: none;
+				@include transition(all 0.2s ease-in-out);
+			}
+		}
+
+		&:hover, &:focus {
+			background: #fff;
+
+			.homepage-event-list__date {
+				background: $dark-blue;
+				color: #fff;
+			}
+
+			.homepage-event-list__title {
+				color: $bright-blue;
+			}
+		}
+	}
+
+	&:last-child > a {
+		margin-bottom: 0;
+	}
+}
+
+@include media($bp-medium-large) {
+	.homepage-events__content {
+		@include grid($gutter: $default-grid-gutter);
+	}
+
+	.homepage-events__featured-image {
+		@include grid-col($col: 6, $gutter: $default-grid-gutter);
+
+		img {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	.homepage-events__excerpt {
+		@include grid-col($col: 6, $gutter: $default-grid-gutter);
+	}
+}
+
+body{
+	ul.tribe-events-sub-nav {
+	    display: none;
+	}
+}
+
+@include media($bp-medium) {
+	.homepage-events {
+		@include grid-col($col: 8, $gutter: $default-grid-gutter);
+	}
+
+	.homepage-events__header {
+		margin-bottom: 1.8em;
+
+		> h3 {
+			font-size: 2.4em;
+		}
+
+		.post-meta {
+			font-size: 1.2em;
+		}
+	}
+
+	.homepage-event-list {
+		@include grid-col($col: 4, $gutter: $default-grid-gutter);
+	}
+
+	.homepage-events__section-title {
+		font-size: 1.5em;
+		padding-bottom: 0.5em;
+		margin-bottom: 0.8em;
+	}
+}

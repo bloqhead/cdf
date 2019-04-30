@@ -1,0 +1,410 @@
+//
+// Dreams
+//
+
+// Archive
+body.post-type-archive-dreams {
+
+  .inner-wrapper {
+    max-width: $max-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page-title {
+    display: none;
+  }
+
+  .page-section--waves-plain {
+    margin-bottom: 0;
+
+    .heading--type-2 {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Single
+body.single-dreams {
+
+  .page-section--waves-fancy {
+    margin-bottom: 70px;
+  }
+
+  .post-dreams {
+    max-width: 805px;
+    margin: 80px auto 0 auto;
+    font-weight: normal;
+
+    blockquote {
+      color: $bright-red;
+      font: normal 16px/1.5 $peachy;
+      text-align: center;
+      margin: 25px;
+    }
+  }
+}
+
+.dreams__masthead-thumbnail-wrapper {
+  margin: 0 auto !important;
+  max-width: 400px;
+}
+
+.masthead__thumbnail {
+  width: 100%;
+  border-radius: 100%;
+  height: auto;
+}
+
+.dreams__masthead-content {
+
+  .dreams__quote {
+    color: #000;
+
+    &:before {
+      opacity: 0.25;
+    }
+  }
+
+  .post__title {
+    color: $yellow;
+    font-family: $peachy;
+    font-size: em(24);
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.teaser-dreams {
+  padding: 25px;
+  text-align: center;
+  @include cleartext;
+
+  a {
+    text-decoration: none;
+  }
+
+  .teaser__image-wrap {
+    border-radius: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    max-width: 273px;
+  }
+
+  .teaser__thumbnail {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .teaser__title {
+    font: 100 18px/1.2 $peachy;
+    color: $bright-red;
+    letter-spacing: 0;
+  }
+}
+
+.dreams__quote {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  margin: 10px 0;
+  font: 100 24px/1.3 $adelle;
+  font-style: italic;
+  color: $dark-gray;
+
+  &:before {
+    position: absolute;
+    z-index: -1;
+    top: -25px;
+    left: -20px;
+    content: "\201C";
+    color: $pale-gray;
+    font: normal 134px/1 $peachy;
+  }
+}
+
+// Filters
+.dream-filters {
+  margin: 20px auto;
+  padding: 20px;
+  background: $pale-gray;
+}
+
+.dream-filters__actions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: $peachy;
+  font-weight: normal;
+  @include cleartext;
+
+  li {
+
+    &.is-active a {
+      color: #fff;
+      background: $bright-red;
+    }
+  }
+
+  a {
+    display: block;
+    color: $dark-blue;
+    text-decoration: none;
+    padding: 10px;
+
+    &:not(.dream-filters__clear):not(.is-needed) {
+      padding: 10px 18px;
+      border-radius: 30px;
+      @include transition(all 0.2s ease-in-out);
+
+      &.is-active {
+        background: $bright-red;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.dream-filters__clear-wrapper {
+  display: none;
+}
+
+// Carousels
+.dreams__carousels {
+  position: relative;
+  margin: 0 auto;
+  max-width: 760px;
+
+  .bx-wrapper {
+    margin: 0 auto;
+  }
+}
+
+.dreams__carousel, .dreams__pager {
+  padding: 0;
+  margin: 0;
+}
+
+.dreams__carousel {
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.dreams__pager-wrapper {
+  width: 100%;
+  background: #000;
+  padding: 20px;
+
+  img {
+	  width: 120px;
+  }
+
+  .bx-controls-direction {
+
+    a {
+      z-index: 1;
+      top: 0;
+      width: 24px;
+      height: 100%;
+      margin: 0;
+      padding: 0 5px;
+      background-size: 60% auto;
+
+      &, &:hover {
+        background-position: center;
+      }
+    }
+
+    .bx-next {
+      right: 0;
+      background-image: url("#{$assets}/shapes/slider_arrow_next.svg");
+    }
+
+    .bx-prev {
+      left: 0;
+      background-image: url("#{$assets}/shapes/slider_arrow_prev.svg");
+    }
+
+    @include media($bp-medium) {
+      a {
+        width: 25px;
+        // width: 49px;
+        background-size: 100% auto;
+        background-color: transparent;
+      }
+    }
+
+    @include media(max-width 1160px) {
+      a {
+        background-color: rgba(#000, 0.75);
+      }
+    }
+
+    @include media(min-width 1161px) {
+      $i: 0px;
+      .bx-next {
+        right: $i;
+      }
+
+      .bx-prev {
+        left: $i;
+      }
+    }
+  }
+}
+
+.dreams__pager {
+
+}
+
+.dreams__pager-item {
+  cursor: pointer;
+
+  &.active {
+
+  }
+}
+
+@include media($bp-medium) {
+  body.post-type-archive-dreams {
+
+    .page-section--waves-plain {
+      padding-bottom: 100px;
+    }
+  }
+
+  body.single-dreams .post-dreams blockquote {
+    font-size: 24px;
+    margin: 60px;
+  }
+
+  .dreams__masthead-thumbnail-wrapper {
+    overflow: hidden;
+    margin: 1.5em 2.5% 0 2.5% !important;
+  }
+
+  .dreams__masthead-content {
+
+    .post__title {
+      font-size: em(40);
+    }
+
+    .dreams__quote {
+      margin-top: 25px;
+      font-size: em(36);
+      color: #fff;
+
+      &:before {
+        top: -55px;
+        left: -65px;
+        font-size: em(70);
+      }
+    }
+  }
+
+  .dreams-teaser-wrap {
+    position: relative;
+
+    // we needed more finite control over the
+    // floating icons here...
+    .floating-icon {
+
+      &__balloon--alt-2 {
+        top: 50px;
+        left: -14%;
+      }
+
+      &__airplane--alt-2 {
+        top: 400px;
+        left: -15%;
+      }
+
+      &__heart--alt-2 {
+        top: 225px;
+        right: -15%;
+      }
+    }
+  }
+
+  .teaser-dreams {
+    width: 33.33%;
+    float: left;
+    margin: 0;
+    padding: 30px 60px;
+
+    .teaser__title {
+      font-size: 24px;
+    }
+  }
+
+  .dream-filters {
+    position: relative;
+    border-radius: 30px;
+    margin-top: -40px;
+  }
+
+  .dream-filters__actions {
+    font-size: em(18);
+    text-align: center;
+    @include grid($justify-content: center, $align-items: center, $flex-wrap: wrap);
+
+    a {
+      display: inline-block;
+    }
+
+    li {
+      @include grid-col($col: auto, $condensed: true);
+    }
+  }
+
+  .dream-filters__clear-wrapper {
+    display: block;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+  }
+
+  .dream-filters__clear {
+    $i: 40px;
+    display: inline-block;
+    border-radius: 100%;
+    background: $bright-red;
+    opacity: 0;
+    visibility: hidden;
+    width: $i;
+    height: $i;
+    line-height: 1;
+    vertical-align: middle;
+    padding: 0;
+    @include transition(all 0.2s ease-in-out);
+
+    &, &:visited, &:active, &:focus {
+      color: #fff !important; // fuck off
+    }
+
+    &.is-needed {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    span {
+      display: none;
+    }
+  }
+
+  .dreams__quote {
+    font-size: 28px;
+  }
+
+  .dreams__pager-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(#000, 0.5);
+  }
+}

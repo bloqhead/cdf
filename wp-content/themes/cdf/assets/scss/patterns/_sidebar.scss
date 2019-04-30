@@ -1,0 +1,99 @@
+//
+// Sidebar
+//
+
+.sidebar {
+  background: $pale-gray;
+  padding: 4em 2.5em;
+  border-radius: 100px;
+
+  .social-buttons {
+    max-width: 160px;
+    margin: 0 auto;
+  }
+
+  &--blog {
+
+  }
+}
+
+.widget-title {
+  display: block;
+  text-align: center;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.3;
+
+  &:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+  }
+}
+
+.widget {
+  padding: 0;
+  margin: 2em 0;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  a {
+    @include transition(all 0.2s ease-in-out);
+  }
+
+  ul, ol {
+    
+    &:not(.social-buttons) {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      line-height: 1.3;
+      @include cleartext;
+  
+      a {
+        display: inline-block;
+        color: #000;
+        text-decoration: none;
+  
+        &:hover, &:active, &:focus {
+          color: $bright-blue;
+        }
+      }
+    }
+  }
+
+  ul:not(.social-buttons) {
+    
+    li {
+      display: block;
+      padding: 0.75em;
+      margin: 0;
+
+      &:not(:last-of-type) {
+        border-bottom: 1px solid $dark-gray;
+      }
+    }
+  }
+}
+
+@include media($bp-medium) {
+  .widget-title {
+    font-size: em(26);
+  }
+
+  .widget {
+
+    > ul:not(.social-buttons), > ol {
+      font-size: em(18);
+
+      li {
+        padding: 1.5em 1.2em;
+      }
+    }
+  }
+}

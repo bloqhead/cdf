@@ -1,0 +1,62 @@
+//
+// Latest News Form Section
+//
+
+.homepage-newsletter {
+
+}
+
+.homepage-newsletter__icon {
+	text-align: center;
+
+	svg {
+		max-width: 200px;
+		height: auto;
+		margin: 0 auto;
+
+		path {
+			fill: $dark-blue;
+		}
+	}
+}
+
+.homepage-newsletter__form {
+
+	.gform_wrapper {
+
+		.top_label .gfield_label {
+			display: none;
+		}
+	
+		.top_label input.medium,
+		.top_label select.medium {
+			display: block;
+			width: 100%;
+			padding: 0.3em 1em !important;
+		}
+	}
+}
+
+@include media(max-width 800px) {
+	.homepage-newsletter__icon {
+		display: none;
+	}
+}
+
+@include media($bp-medium) {
+	.homepage-newsletter__icon {
+
+		svg {
+			max-width: 400px;
+		}
+	}
+
+	.homepage-newsletter__form form {
+		font-size: 1em;
+
+		.btn, button, input[type="submit"], input[type="reset"] {
+			font-size: inherit;
+			margin-top: 0.75em;
+		}
+	}
+}

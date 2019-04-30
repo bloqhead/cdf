@@ -1,0 +1,51 @@
+<div class="site-info inner-wrapper">
+
+	<div class="colophon__widget-container">
+		<div class="colophon__widget">
+			<a href="https://www.charitynavigator.org/index.cfm?bay=search.summary&orgid=11988">
+				<img src="{{ fn( 'get_theme_path', '/assets/images/four_star_charity_logo.jpg' ) }}" alt="Charity Navigator">
+			</a>
+		</div>
+		<div class="colophon__widget">
+			<address>
+				<p>
+					200 Central Ave Suite 1830<br>
+					St. Petersburg, FL 33701 | <a href="tel:+17278966380">727.896.6390</a>
+				</p>
+			</address>
+		</div>
+		<div class="colophon__widget">
+			<h4>Stay In Touch</h4>
+			{% include "partials/social.twig" with { 'inline': true } %}
+		</div>
+		<div class="colophon__widget">
+			<p><a href="/donate-now/" class="btn btn--inverse btn--block">Donate Now</a></p>
+		</div>
+	</div>
+
+	<div id="copyright">
+		<p>
+			<a href="/financial-information/">Financial Information</a> <span>|</span>&nbsp;
+			<a href="/privacy-policy/">Privacy Policy</a> <span>|</span>&nbsp;
+			&copy; {{ "now" | date('Y') }} {{site.name}}
+		</p>
+		<p>Built by Big Sea</p>
+	</div>
+
+	<a href="#" class="scroll-to-top">
+		<span class="sr-only">Scroll to top</span>
+		<i class="fa fa-angle-up" aria-hidden="true"></i>
+	</a> <!-- .scroll-to-top -->
+	<script>
+		document.querySelector('.gradient').onmousemove = (e) => {
+	
+			const x = e.pageX - e.target.offsetLeft
+			const y = e.pageY - e.target.offsetTop
+		
+			e.target.style.setProperty('--x', `${ x }px`)
+			e.target.style.setProperty('--y', `${ y }px`)
+			
+		}
+	</script>
+
+</div><!-- .site-info -->

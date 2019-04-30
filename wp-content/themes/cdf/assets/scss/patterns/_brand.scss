@@ -1,0 +1,28 @@
+//
+// Brand
+//
+
+#cdf-logo {
+
+	&,
+	.cdf-sun,
+	.cdf-additional-text,
+	.cdf-main-title {
+		@include transition($global-masthead-transition);
+	}
+}
+
+.brand {
+	padding: 0;
+}
+
+.brand__title {
+	font-size: 1.3em;
+	padding: 0;
+	margin: 0;
+}
+
+.brand__logo {
+	display: block;
+	text-decoration: none;
+}

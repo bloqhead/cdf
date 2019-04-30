@@ -1,0 +1,104 @@
+//
+// Homepage: Kid Profiles
+//
+
+.page-section--their-dreams {
+
+}
+
+.kids {
+
+}
+
+.kids__profile {
+	margin: 1em auto;
+	max-width: 50%;
+	min-width: 200px;
+
+	> a {
+		display: block;
+		text-decoration: none;
+		@include transition(all 0.2s ease-in-out);
+
+		&:hover, &:focus, &:active {
+			@include animation("FunSpin" 0.5s ease-in-out 1 normal);
+
+			.kids__name {
+				@include transform(scale(1.05));
+
+				h3 , p {
+					color: $bright-blue;
+				}
+			}
+		}
+	}
+}
+
+.kids__face {
+	display: block;
+	height: auto;
+	border-radius: 100%;
+}
+
+.kids__name {
+	position: relative;
+	display: block;
+	background: transparent url("#{$assets}/shapes/name_container_dream_section.svg") no-repeat center center;
+	background-size: 100% 100%;
+	padding: 1.5em;
+	margin-top: -1.5em;
+
+	&, h3, p {
+		@include transition(all 0.2s ease-in-out);
+	}
+
+	h3, p {
+		margin: 0;
+	}
+
+	h3 {
+		font-size: 1.2em;
+		font-family: $peachy;
+		color: $bright-red;
+		text-transform: uppercase;
+		letter-spacing: $base-letter-spacing;
+	}
+
+	p {
+		font-size: 1em;
+		font-family: $adelle;
+		font-style: italic;
+		color: $dark-gray;
+	}
+}
+
+@include media($bp-medium) {
+	.kids {
+		@include grid($justify-content: center, $align-items: center);
+	}
+
+	.kids__face {
+		width: 100%;
+	}
+
+	.kids__profile {
+		@include grid-col($col: 4, $gutter: 5.25%);
+	}
+}
+
+@include media($bp-medium-large) {
+	.kids__profile {
+		@include grid-col($col: 4, $gutter: 7.25%);
+	}
+
+	.kids__name {
+
+		h3 {
+			font-size: 1.475em;
+		}
+
+		p {
+			font-size: 1.15em;
+		}
+	}
+}

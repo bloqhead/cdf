@@ -1,0 +1,72 @@
+//
+// Social
+//
+
+.social-buttons {
+	@include cleanlist;
+
+	li {
+		display: block;
+		clear: both;
+	}
+
+	a {
+		display: block;
+		width: 40px;
+		height: 40px;
+		margin: 0 auto 0.5em auto;
+
+		&, &:visited {
+			
+			svg path {
+				fill: $dark-blue;
+			}
+		}
+
+		svg {
+			max-width: 100%;
+			height: auto;
+
+			path {
+				@include transition(0.2s all ease-in-out);
+			}
+		}
+
+		&:hover, &:focus, &:active {
+
+			svg path {
+				fill: $bright-blue;
+			}
+		}
+	}
+}
+
+.social-buttons--inline {
+	@include grid($gutter: 0);
+
+	li {
+		@include grid-col($col: auto, $condensed: true);
+	}
+}
+
+.dual-columns {
+
+	.social-buttons {
+		max-width: 162px;
+		text-align: center;
+		margin: 0 auto;
+	}
+}
+
+.colophon__widget {
+
+	@include media($bp-medium-large) {
+		.social-buttons {
+			max-width: 80%;
+			
+			a {
+				margin: 0 0 0.5em 0;
+			}
+		}
+	}
+}

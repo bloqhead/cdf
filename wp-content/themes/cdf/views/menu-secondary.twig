@@ -1,0 +1,9 @@
+{% if secondary_menu %}
+	<ul class="menu secondary-menu" id="{{secondary_menu.slug}}">
+	{% for item in secondary_menu.get_items %}
+		<li class="{{item.classes | join(' ')}}">
+			<a href="{{item.get_link}}">{{item.title}}</a>
+		</li>
+	{% endfor %}
+	</ul>
+{% endif %}

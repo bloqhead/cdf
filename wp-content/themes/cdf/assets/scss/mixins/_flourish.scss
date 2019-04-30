@@ -1,0 +1,46 @@
+//
+// Flourish
+//
+
+@mixin flourish {
+	&:before {
+		display: block;
+		width: 100px;
+		height: 100px;
+		content: " ";
+		background: transparent url("#{$assets}/large_icons/confetti_light.svg") no-repeat center;
+		background-size: 100% auto;
+		@include transform(
+			translateX(-75px)
+			translateY(15px)
+			rotate(-45deg)
+		);
+	}
+
+	&.dark-flourish {
+
+		&:before {
+			background: transparent url("#{$assets}/large_icons/confetti.svg") no-repeat center;
+		}
+	}
+}
+
+@mixin heading-flourish {
+	color: $dark-blue;
+	font-size: em(24);
+
+	@include media($bp-medium) {
+		margin-bottom: 3em;
+		@include flourish;
+
+		&:before {
+			background-image: url("#{$assets}/large_icons/confetti_red.svg");
+			@include transform(
+				scale(1.15)
+				translateX(-75px)
+				translateY(15px)
+				rotate(-45deg)
+			);
+		}
+	}
+}

@@ -1,0 +1,248 @@
+//
+// Blog + post single
+//
+
+// Blog
+
+body.blog,
+body.group-blog {
+
+  @include media($bp-medium) {
+    #page-wrapper {
+      max-width: none;
+      padding: 0;
+    }
+  }
+}
+
+// Blog and Single group styles
+
+body.blog,
+body.group-blog,
+body.single-post {
+
+  .byline {
+    display: none !important; // GODDAMMIT UNDERSCORES
+  }
+}
+
+// Single post
+
+body.single-post {
+
+  #page-wrapper {
+    max-width: none;
+    padding: 0;
+  }
+
+  .post {
+    max-width: $another-max-width;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .post__header-shape {
+    $m: 3.5em;
+    position: relative;
+    z-index: 1;
+    background: transparent url("#{$assets}/shapes/post_meta_bg.svg") no-repeat center;
+    background-size: 100% 100%;
+    margin: -#{$m} -#{$m} #{$m} -#{$m};
+
+    a {
+      color: $dark-blue;
+      text-decoration: none;
+
+      &:hover, &:active, &:focus {
+        color: $bright-red;
+      }
+    }
+  }
+
+  .post__header-shape-inner {
+    padding: 2em 3em;
+  }
+
+  .post__title {
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.2;
+    margin: 0 0 0.35em 0;
+  }
+
+  .post__meta {
+    font-family: $sofia;
+    margin: 0;
+  }
+
+  .post__content {
+
+    ul {
+      margin: 1em 0;
+      padding: 0;
+
+      li {
+        color: inherit;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        &:before {
+          position: relative;
+          top: 0;
+          color: $bright-red;
+          content: "\2022";
+          font-size: 1.65em;
+          padding-right: 0.25em;
+        }
+      }
+    }
+  }
+
+  .post__footer {
+
+    .btn {
+      font-size: em(16);
+    }
+  }
+
+  .post__footer-title {
+    text-align: center;
+  }
+
+  .post__newsletter-form, .post__social {
+    padding: 3em;
+  }
+
+  .post__newsletter-form {
+
+    input[type="text"], input[type="email"] {
+      border: 0;
+      background: #fff;
+    }
+
+    input[type="submit"], button {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .post__social {
+
+    .social-buttons {
+      max-width: 150px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.teaser-post {
+  padding: 0 0 2.75em 0;
+
+  &:not(:last-of-type) {
+    border-bottom: 2px solid $pale-gray;
+    margin-bottom: 2.75em;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .teaser__header {
+
+  }
+
+  .teaser__thumbnail {
+
+  }
+
+  .teaser__title {
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.3;
+
+    a {
+
+      &, &:visited {
+        color: #000;
+      }
+
+      &:hover, &:active, &:focus {
+        color: $bright-blue;
+      }
+    }
+  }
+
+  .teaser__post-meta {
+    font-family: $sofia;
+  }
+
+  .teaser__post-date {
+
+  }
+
+  .teaser__read-more {
+    text-transform: uppercase;
+    font-weight: 700;
+
+    a {
+      color: $bright-red;
+
+      &:hover, &:active {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@include media($bp-medium) {
+  body.single-post {
+
+    .post__footer {
+      @include grid($justify-content: stretch, $align-items: stretch, $align-content: stretch);
+    }
+
+    .post__newsletter-form, .post__social {
+      @include grid-col($col: 6, $gutter: 0);
+    }
+  }
+
+  .teaser-post {
+
+    .teaser__post-meta {
+      @include grid($justify-content: stretch, $align-items: stretch, $align-content: stretch);
+    }
+
+    .teaser__post-date, .teaser__read-more {
+      @include grid-col($col: 6, $gutter: 0);
+    }
+
+    .teaser__read-more {
+      text-align: right;
+    }
+  }
+}
+
+// nope
+.posted-on a {
+
+  &, &:hover, &:active, &:focus, &:visited {
+    color: inherit !important;
+  }
+}
+
+.post__newsletter-form input[type="email"] {
+    width: 100% !important;
+    padding: 15px !important;
+}
+
+.post__newsletter-form .gform_wrapper ul.gform_fields li.gfield{
+    padding-right:0;
+}

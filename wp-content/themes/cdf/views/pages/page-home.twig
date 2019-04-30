@@ -1,0 +1,340 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<!-- Mission Statement -->
+	<section class="page-section page-section--mission-statement">
+		<div class="page-section__inner">
+
+			<div class="grid__center">
+				<div class="grid__col-5">
+					<figure class="mission-cta">
+						<figcaption class="mission-cta__controls">
+							<a href="/donate-now/">
+								<div class="mission-cta__image-group">
+									{% include "assets/images/dream_circle_static.svg" %}
+									{% include "assets/images/dream_circle_hover.svg" %}
+									<span class="sr-only">Donate Now</span>
+								</div>
+							</a>
+						</figcaption>
+					</figure>
+				</div>
+				<div class="grid__col-7">
+					<div class="mission-cta__summary">
+						<h2>Every Child has a Dream</h2>
+						<p>The Children’s Dream Fund makes dreams come true for children with life-threatening illnesses living throughout West Central Florida. From puppies to playgrounds, special trips to meetings with celebrities, we help every child referred to us by area hospitals.</p>
+						<p><a href="/how-dreams-come-true/" class="btn btn--inverse gradient"><span>Get Started</span></a></p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- See Their Dreams -->
+	<section class="page-section text-center floating-icon-container page-section--their-dreams">
+		<div class="page-section__inner narrow container-overlay">
+			<header class="page-section__header">
+				<h2>Share their joy</h2>
+			</header>
+			<div class="page-section__content">
+				<p>No two dreams are alike. Every day we're inspired by the imaginations and
+				personalities of the children we're honored to serve.</p>
+			</div>
+		</div>
+
+		<div class="page-section__inner kids">
+			{# Dreams CPT loop #}
+			{% for dream in dreams %}
+			<figure class="kids__profile">
+				<a href="{{dream.link}}">
+				{% if dream.thumbnail %}
+					<img src="{{dream.thumbnail.src('big-sea-dreams-tile')}}" alt="{{dream.thumbnail.alt}}" class="kids__face">
+				{% endif %}
+					<figcaption class="kids__name">
+						<h3>{{dream.title}}</h3>
+					{% if dream.dreams_quote %}
+						<p>{{dream.dreams_quote}}</p>
+					{% endif %}
+					</figcaption>
+				</a>
+			</figure>
+			{% endfor %}
+		</div>
+		<div class="page-section__footer">
+			{# this must always be linked to the dreams archive. if the slug changes, this needs to change also. #}
+			<a href="/dreams/" class="btn">See the Dreams</a>
+		</div>
+
+		<!-- floating icons -->
+		<div class="floating-icon floating-icon__balloon" aria-hidden="true">
+			{% include "/assets/images/large_icons/balloon.svg" %}
+		</div>
+		<div class="floating-icon floating-icon__airplane" aria-hidden="true">
+			{% include "/assets/images/large_icons/airplane.svg" %}
+		</div>
+		<div class="floating-icon floating-icon__cruiseship" aria-hidden="true">
+			{% include "/assets/images/large_icons/cruiseship.svg" %}
+		</div>
+		<div class="floating-icon floating-icon__controller" aria-hidden="true">
+			{% include "/assets/images/large_icons/controller.svg" %}
+		</div>
+
+	</section>
+
+	<!-- Events -->
+	<section class="page-section page-section--events page-section--waves">
+		<div class="page-section__inner">
+			<div class="page-section__content">
+				<div class="grid">
+					<div class="homepage-events">
+
+						<h2 class="homepage-events__section-title">
+						{% set featuredEvent = options.options_featured_event %}
+						{% if featuredEvent %}
+							Featured Event
+						{% else %}
+							No Featured Event
+						{% endif %}
+						</h2>
+						{% if featuredEvent %}
+							{{ fn('homepage_featured_event') }}
+						{% else %}
+							<p>
+								<em>No event set as featured!</em>
+							{% if fn('is_user_logged_in') %}
+								<a href="/wp-admin/admin.php?page=acf-options">Set one here.</a>
+							{% endif %}
+							</p>
+						{% endif %}
+					</div>
+					<div class="homepage-event-list">
+						<h2 class="homepage-events__section-title">
+						{{ events ? 'Upcoming Events' : 'No Upcoming Events' }}
+						</h2>
+
+						{% for event in events %}
+						<article class="homepage-event-list__event">
+							<a href="{{event.link}}">
+								<div class="homepage-event-list__date">
+									<div class="homepage-event-list__month">
+										{{ fn('cdf_getTribeStartDate', event, 'M') }}
+									</div>
+									<div class="homepage-event-list__day">
+										{{ fn('cdf_getTribeStartDate', event, 'd') }}
+									</div>
+								</div>
+								<div class="homepage-event-list__title">
+									<h3>{{event.title}}</h3>
+								</div>
+							</a>
+						</article>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Statistics -->
+	<section class="page-section text-center floating-icon-container page-section--statistics">
+		<div class="page-section__inner narrow container-overlay">
+			<header class="page-section__header">
+				<h2>What makes The Children's Dream Fund special?</h2>
+			</header>
+			<div class="page-section__content floating-stats-wrapper">
+				<p>The Children's Dream Fund is a local wish-granting organization serving West Central Florida.
+					Children do not have to be terminally ill to receive a dream, and many go on to live healthy lives.</p>
+			</div>
+		</div>
+
+		<div class="page-section__inner">
+			<div class="floating-stats floating-icon-container">
+				<div class="floating-stats__item">
+					<h4>82%</h4>
+					<p>of every dollar raised goes directly to dreams</p>
+				</div>
+				<div class="floating-stats__item">
+					<h4>Zero</h4>
+					<p>telemarketing to raise funds</p>
+				</div>
+				<div class="floating-stats__item">
+					<h4>3,000</h4>
+					<p>children and counting have been served</p>
+				</div>
+				<div class="floating-stats__item">
+					<h4>Four</h4>
+					<p>star rating Charity Navigator</p>
+				</div>
+				{#<div class="floating-stats__item">
+					<h4>50%</h4>
+					<p>of dreams costs are covered by in-kind donations</p>
+				</div>#}
+
+				<!-- floating icons -->
+				<div class="floating-icon floating-icon__crown" aria-hidden="true">
+					{% include "/assets/images/large_icons/crown.svg" %}
+				</div>
+				<div class="floating-icon floating-icon__heart" aria-hidden="true">
+					{% include "/assets/images/large_icons/heart.svg" %}
+				</div>
+
+			</div>
+		</div>
+
+	</section>
+
+	<!-- Get Involved -->
+	<section class="page-section text-center page-section--get-involved">
+		<div class="page-section__inner">
+			<header class="page-section__header">
+				<h2>Get Involved</h2>
+			</header>
+			<div class="page-section__content">
+				<div class="actions">
+
+					<div class="actions__item">
+						<a href="/kids-who-care/">
+							<div class="actions__item-static">
+								<div class="actions__icon">
+									{% include "assets/images/get_involved_icons/encourage_kids.svg" %}
+								</div>
+								<h3 class="actions__item-title">Encourage Kids<br>
+								to Fundraise</h3>
+							</div>
+							<div class="actions__item-hover">
+								<p>Our Kids Who Care program empowers young people to help those in need.</p>
+								<p class="actions__hover-text">
+									Learn More <i class="fa fa-angle-right" aria-hidden="true"></i>
+								</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="actions__item">
+						<a href="/volunteer-opportunities/">
+							<div class="actions__item-static">
+								<div class="actions__icon">
+									{% include "assets/images/get_involved_icons/volunteer_time.svg" %}
+								</div>
+								<h3 class="actions__item-title">Volunteer<br>
+								Your Time</h3>
+							</div>
+							<div class="actions__item-hover">
+								<p>Help is always needed at our office and at a host of events in the community.</p>
+								<p class="actions__hover-text">
+									Apply Now <i class="fa fa-angle-right" aria-hidden="true"></i>
+								</p>
+							</div>
+						</a>
+					</div>
+
+					<div class="actions__item">
+						<a href="/legacy-and-memorial-gifts/">
+							<div class="actions__item-static">
+								<div class="actions__icon">
+									{% include "assets/images/get_involved_icons/start_legacy.svg" %}
+								</div>
+								<h3 class="actions__item-title">Start A<br>
+								Legacy</h3>
+							</div>
+							<div class="actions__item-hover">
+								<p>Leave a bequest or honor a loved one with your gift.</p>
+								<p class="actions__hover-text">
+									Find Out How <i class="fa fa-angle-right" aria-hidden="true"></i>
+								</p>
+							</div>
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Get The Latest News -->
+	<section class="page-section page-section--latest-news">
+		<div class="page-section__inner">
+			<div class="page-section__content">
+				<div class="grid homepage-newsletter">
+					<div class="grid__col-6 homepage-newsletter__form">
+						<h2>Get The Latest News</h2>
+						{{fn('do_shortcode','[gravityform id="2" title="false" description="false" ajax="true"]')}}
+					</div>
+					<div class="grid__col-6 homepage-newsletter__icon">
+						{% include "assets/images/large_icons/envelope.svg" %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Featured Partners -->
+	<section class="page-section text-center page-section--featured-partners">
+		<div class="page-section__inner">
+			<header class="page-section__header">
+				<h2>Community Partners</h2>
+			</header>
+			<div class="page-section__content">
+				<ul class="carousel carousel--partners">
+					<li>
+						<a href="https://baycare.org/sjch?hcmacid=a0Z1a000003TboSEAS">
+							<img src="{{ fn( 'get_theme_path', '/assets/images/partners/partner_st_joes.jpg' ) }}" alt="St Joes">
+						</a>
+					</li>
+					<li>
+						<a href="http://sheraton-waikiki.com/">
+							<img src="{{ fn( 'get_theme_path', '/assets/images/partners/partner_sheraton.png' ) }}" alt="Sheraton Waikiki">
+						</a>
+					</li>
+					<li>
+						<a href="http://clearchanneloutdoor.com/">
+							<img src="{{ fn( 'get_theme_path', '/assets/images/partners/partner_clear_channel.png' ) }}" alt="ClearChannel">
+						</a>
+					</li>
+					<li>
+						<a href="http://sabalhcc.com/">
+							<img class="bsdlogo sabal" src="{{ fn( 'get_theme_path', '/assets/images/partners/sabal.jpg' ) }}" alt="Sabal Palms">
+						</a>
+					</li>
+					<li>
+						<a href="http://hhlimo.com/">
+							<img src="{{ fn( 'get_theme_path', '/assets/images/partners/partner_his_and_hers.png' ) }}" alt="His &amp; Hers">
+						</a>
+					</li>
+					<li>
+						<a href="http://www.cushmanwakefield.com/">
+							<img src="{{ fn( 'get_theme_path', '/assets/images/partners/partner_cushman.png' ) }}" alt="Cushman &amp; Wakefield">
+						</a>
+					</li>
+					<li>
+						<a href="http://www.stpete.com/">
+							<img src="{{ fn( 'get_theme_path', '/assets/images/partners/partner_st_pete_chamber.png' ) }}" alt="St. Pete Chamber">
+						</a>
+					</li>
+					<li>
+						<a href="https://www.mlb.com/rays">
+							<img src="{{ fn( 'get_theme_path', '/assets/images/partners/partner_rays.png' ) }}" alt="Rays">
+						</a>
+					</li>
+					<li>
+						<a href="https://www.tampachamber.com/">
+							<img src="{{ fn( 'get_theme_path', '/assets/images/partners/partner_tampa_chamber.png' ) }}" alt="Tampa Chamber of Commerce">
+						</a>
+					</li>
+					<li>
+						<a href="https://www.tgh.org/">
+							<img src="{{ fn( 'get_theme_path', '/assets/images/partners/partner_tampa_general_hospital.png' ) }}" alt="Tampa General Hospital">
+						</a>
+					</li>
+					<li>
+						<a href="https://www.hopkinsallchildrens.org/">
+							<img src="{{ fn( 'get_theme_path', '/assets/images/partners/partner_all_childrens_hospital.png' ) }}" alt="All Children's Hospital">
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

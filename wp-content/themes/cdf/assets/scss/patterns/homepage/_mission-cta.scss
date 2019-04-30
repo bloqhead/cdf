@@ -1,0 +1,141 @@
+//
+// Homepage Mission Masthead
+//
+
+$mission-cta-width: 600px;
+$mission-cta-height: 612px;
+
+.mission-cta {
+
+}
+
+.mission-cta__controls {
+	position: relative;
+	text-align: center;
+	overflow: hidden;
+
+	> a {
+		display: block;
+		width: 100%;
+		text-decoration: none;
+	}
+
+	img {
+		position: relative;
+		top: 0;
+		width: 100%;
+		height: auto;
+	}
+}
+
+.mission-cta__image-group {
+	overflow: hidden;
+
+	svg {
+		display: block;
+		max-width: 100%;
+		height: auto;
+		margin: 0;
+		padding: 0;
+		@include transition(
+			opacity 0.2s ease-in-out,
+			visibility 0.2s ease-in-out
+		);
+	}
+
+	// IE has trouble properly sizing SVGs
+	// without explicit dimensions set.
+	@include targetIE {
+		max-height: 464px !important;
+
+		svg {
+			width: 453px !important;
+			height: 464px !important;
+			transition: none !important;
+		}
+	}
+
+	svg:last-of-type {
+		opacity: 1;
+		visibility: visible;
+		width: 100%;
+		height: auto;
+	}
+
+	svg:first-of-type {
+		opacity: 0;
+		visibility: hidden;
+		width: 0;
+		height: 0;
+	}
+}
+
+.mission-cta__summary {
+
+	> h2 {
+		text-transform: uppercase;
+		letter-spacing: 0;
+		padding: 0;
+		margin: 0;
+		line-height:1.25;
+		span{
+			font-size:30px;
+			text-transform: none;
+			color:#002c71;
+			b{
+				color:#ef0047;
+			}
+		}
+	}
+}
+
+@include media(max-width 800px) {
+	.mission-cta__controls {
+
+		> a {
+			margin: 0 auto;
+			font-size: 0.9em;
+		}
+	}
+
+	.mission-cta__summary {
+		text-align: center;
+	}
+}
+
+@include media($bp-medium) {
+	.mission-cta__controls {
+
+		> a {
+			max-width: $mission-cta-width;
+			// height: $mission-cta-height;
+
+			&:hover, &:focus, &:active {
+
+				.mission-cta__image-group {
+
+					svg:first-of-type {
+						opacity: 1;
+						visibility: visible;
+						width: 100%;
+						height: auto;
+					}
+
+					svg:last-of-type {
+						opacity: 0;
+						visibility: hidden;
+						width: 0 !important;
+						height: 0 !important;
+					}
+				}
+			}
+		}
+	}
+
+	.mission-cta__summary {
+
+		> h2 {
+			font-size: 2.8em;
+		}
+	}
+}

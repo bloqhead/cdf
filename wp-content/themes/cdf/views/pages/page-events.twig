@@ -1,0 +1,42 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	{% if ( fn( 'empty_content', post.post_content ) ) %}
+	<section class="page-section page-section--waves-plain">
+		<div class="page-section__inner">
+			<div class="grid">
+				<div class="grid__col-free">
+					<div class="page-section__focus-content">
+						<h1 class="heading heading--type-2 uppercase">{{post.title}}</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% else %}
+	<!-- Fancy Masthead -->
+	<section class="page-section page-section--waves{% if post.thumbnail.src %} page-section--waves-custom" style="background-image: url('{{post.thumbnail.src('big-sea-masthead')}}');{% else %} page-section--waves-plain{% endif %}">
+		<div class="page-section__inner">
+
+			<div class="grid">
+				<div class="grid__col-free">
+					<div class="page-section__focus-content">
+						<h4 class="heading heading--type-2 uppercase">{{post.title}}</h4>
+						{# <p class="text-large">{{ post.content }}</p> #}
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+	{% endif %}
+
+	<section class="page-section page-section--{{ post.post_name }}">
+		<div class="page-section__inner narrow-content">
+			<div class="page-section__content">
+				{{ post.event }}
+			</div>
+		</div>
+	</section>
+{% endblock %}

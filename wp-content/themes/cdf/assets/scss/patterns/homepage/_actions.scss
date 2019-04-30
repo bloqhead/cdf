@@ -1,0 +1,113 @@
+//
+// Actions
+// These are the circular yellow CTAs on the homepage
+//
+
+.actions {
+	text-align: center;
+}
+
+.actions__item {
+	position: relative;
+	background: transparent url("#{$assets}/shapes/yellow_imperfect_circle.svg") no-repeat center;
+	background-size: auto 100%;
+	padding: 4em;
+
+	> a {
+		display: block;
+		text-decoration: none;
+
+		&, &:hover, &:active, &:focus, &:visited {
+			color: $dark-blue !important;
+		}
+	}
+
+	@include targetIE {
+		max-width: calc(100% / 3);
+		background-size: auto 85%;
+	}
+}
+
+.actions__item-title {
+	color: $dark-blue;
+	text-transform: uppercase;
+	line-height: 1.2;
+	margin: 0;
+	padding: 0;
+}
+
+.actions__hover-text {
+	display: block;
+	margin: 1em 0 0 0 !important;
+	font-weight: bold;
+	font-family: $sofia;
+	text-transform: uppercase;
+	color: $bright-red;
+	letter-spacing: $base-letter-spacing;
+}
+
+.actions__item-hover {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	@include transform( translateX(-50%) translateY(-50%) );
+	visibility: hidden;
+	opacity: 0;
+	max-width: 218px;
+}
+
+.actions__icon {
+	max-width: 75px;
+	min-height: 95px;
+	height: auto;
+	margin: 0 auto 0.8em auto;
+
+	svg path {
+		fill: $dark-blue;
+	}
+}
+
+@include media(max-width 1024px) {
+	.actions__item {
+		margin: 1em auto;
+		max-width: 280px;
+
+		h3 {
+			font-size: 0.9em;
+
+			br {
+				display: none;
+			}
+		}
+	}
+}
+
+@include media($bp-medium-large) {
+	.actions {
+		@include grid($gutter: $default-grid-gutter);
+	}
+
+	.actions__item {
+		@include grid-col($col: 4);
+
+		h3 {
+			font-size: 1.2em;
+		}
+
+		> a {
+
+			&:hover, &:active {
+
+				.actions__item-static {
+					visibility: hidden;
+					opacity: 0;
+				}
+
+				.actions__item-hover {
+					visibility: visible;
+					opacity: 1;
+				}
+			}
+		}
+	}
+}

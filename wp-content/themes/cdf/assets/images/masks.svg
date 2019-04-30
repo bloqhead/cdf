@@ -1,0 +1,9 @@
+<svg id="masks" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0">
+	<defs>
+		<!-- mask for kids faces -->
+		<clipPath id="mask--kid-profiles" clipPathUnits="objectBoundingBox">
+			<!-- <path d="M230 35.996c38 39 55 97 41 145s-47 73-99 86-147-17-168-102C-21 43.498 86 4.498 121.5 1.498c16.607-2 70.5-4.502 108.5 34.498z"/> -->
+			<path d="M230,35.996c38,39,55,97,41,145s-47,73,-99,86s-147,-17,-168,-102c-25,-121.498,82,-160.498,117.5,-163.498c16.607,-2,70.5,-4.502,108.5,34.498z"/>
+		</clipPath>
+	</defs>
+</svg>

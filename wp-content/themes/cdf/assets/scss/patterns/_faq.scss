@@ -1,0 +1,30 @@
+//
+// FAQ
+//
+
+.faq {
+
+}
+
+.faq__item {
+
+}
+
+.faq__header {
+
+}
+
+.faq__item-title {
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+@include media($bp-medium) {
+	.faq {
+		max-width: 790px;
+	}
+
+	.faq__item:not(:first-of-type) {
+		margin-top: 5em;
+	}
+}

@@ -1,0 +1,6 @@
+// Target IE10+
+@mixin targetIE {
+  @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    @content;
+  }
+}

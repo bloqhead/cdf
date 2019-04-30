@@ -1,0 +1,68 @@
+//
+// Scroll FX
+//
+
+// scroll fx
+html.scrolled {
+
+	@include media($bp-medium) {
+
+		// masthead
+		#masthead {
+			position: fixed;
+			top: 0; right: 0; left: 0;
+			z-index: 999;
+			background: rgba($dark-blue, 0.97);
+			@include animation("NavReveal" 0.25s ease-in-out 1 normal);
+
+			.inner-wrapper {
+				background: none;
+				margin-top: 0;
+				padding: 0.5em;
+			}
+		}
+
+		// main menu
+		.main-menu {
+
+			a {
+
+				&, &:visited {
+					color: #fff;
+				}
+
+				&:hover, &:focus, &:active {
+					color: $yellow;
+				}
+			}
+		}
+
+		// secondary menu
+		.secondary-menu {
+			margin-top: 0;
+			margin-bottom: 0;
+
+			a {
+
+				&, &:visited {
+					color: $yellow;
+				}
+
+				&:hover, &:active, &:focus {
+					color: #fff;
+				}
+			}
+		}
+
+		// main logo
+		#cdf-logo {
+			@include transform(scale(0.85));
+
+			.cdf-sun,
+			.cdf-additional-text,
+			.cdf-main-title {
+				fill: #fff;
+			}
+		}
+	}
+}

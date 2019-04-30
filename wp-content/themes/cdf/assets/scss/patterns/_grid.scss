@@ -1,0 +1,44 @@
+//
+// Grid
+//
+// Note: Grid columns should alwayes be wrapped
+// in a `.grid` wrapper in order to work properly
+//
+
+.grid__col-free {
+	width: 100%;
+}
+
+@include media($bp-medium) {
+	.grid {
+		@include grid($gutter: $default-grid-gutter);
+	}
+
+	.grid__center {
+		@include grid($gutter: $default-grid-gutter, $justify-content: center, $align-items: center);
+	}
+
+	@for $i from 1 through 12 {
+		.grid__col-#{$i} {
+			@include grid-col($col: $i, $gutter: $default-grid-gutter);
+		}
+	}
+}
+
+.grid--discs {
+
+	> [class*="grid-col"] {
+		overflow: hidden;
+		border-radius: 50%;
+	}
+
+	@include media($bp-medium) {
+		@include grid($gutter: 0);
+
+		@for $i from 1 through 12 {
+			.grid__col-#{$i} {
+				@include grid-col($col: $i, $gutter: 11%, $condensed: true);
+			}
+		}
+	}
+}

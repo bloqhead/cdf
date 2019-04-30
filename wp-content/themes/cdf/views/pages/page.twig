@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block outerbar %}
+	<section class="page-section page-section--waves-plain outerbar">
+		<div class="page-section__inner">
+			<h1 class="heading heading--type-2 uppercase">{{post.title}}</h1>
+		</div>
+	</section>
+{% endblock %}
+
+{% block content %}
+	<section class="page-section">
+		<div class="page-section__inner narrow-content">
+			<div class="page-section__content">
+				{{ post.content }}
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
+{% block sidebar %}
+	{% include  "partials/sidebar.twig" %}
+{% endblock %}

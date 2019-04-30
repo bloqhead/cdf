@@ -1,0 +1,52 @@
+//
+// Base SCSS
+//
+// @author Daryn St. Pierre <daryn@bloqmail.com>
+// https://github.com/bloqhead/Base-SCSS
+//
+// This file does not try to contend with tools like
+// Bourbon and Neat. It simply adds things that I use
+// on a daily basis. Some of them are edge case.
+//
+// If you need something more involved, look into these:
+// * Bourbon [http://bourbon.io]
+// * Neat [http://neat.bourbon.io]
+//
+
+//
+// Variables and Settings
+//
+
+//
+// Bourbon and Neat
+// Set both to true if you want to use
+// the Neat grids module.
+//
+$bourbon:           false;
+$neat:              false;
+
+// Headings
+$headings:          'h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6';
+
+// Form buttons
+$form-buttons:      'button, .button, .btn, input[type="submit"], input[type="reset"]';
+
+// Form inputs
+$inputs:            email, number, password, search, tel, text, url, color, date, datetime, datetime-local, month, time, week;
+
+//
+// Modules
+//
+@import 'modules/angler';
+@import 'modules/breakpoints';
+@import 'modules/flexmenu';
+@import 'modules/forms';
+@import 'modules/hamburger';
+@import 'modules/icons';
+@import 'modules/images';
+@import 'modules/lists';
+@import 'modules/pseudo-shift';
+@import 'modules/responsive-type';
+@import 'modules/type';
+@import 'modules/utility';
+@import 'modules/clearfix';

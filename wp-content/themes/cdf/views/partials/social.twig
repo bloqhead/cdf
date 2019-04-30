@@ -1,0 +1,15 @@
+{% set vars = { inline: false } %}
+<ul class="social-buttons{% if inline == true %} social-buttons--inline{% endif %}">
+	<li class="social-buttons__facebook">
+		<a href="http://www.facebook.com/pages/The-Childrens-Dream-Fund/353384478777" rel="external">{% include "assets/images/social/facebook.svg" %}</a>
+		<span class="sr-only">Keep up to date with us on Facebook</span>
+	</li>
+	<li class="social-buttons__twitter">
+		<a href="https://twitter.com/ChildDreamFund" rel="external">{% include "assets/images/social/twitter.svg" %}</a>
+		<span class="sr-only">Follow us on Twitter</span>
+	</li>
+	<li class="social-buttons__instagram">
+		<a href="https://www.instagram.com/childrensdreamfund/" rel="external">{% include "assets/images/social/instagram.svg" %}</a>
+		<span class="sr-only">See our videos and photos on Instagram</span>
+	</li>
+</ul>
